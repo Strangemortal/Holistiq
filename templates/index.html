@@ -1,41 +1,25 @@
 {% extends "base.html" %} {% block title %}Home - Health Toolkit{% endblock %}
 {% block content %}
-<div class="hero-section bg-gradient					<a
-						href="https://bmsi.netlify.app/"
-						class="btn btn-outline-danger"
-					>
-						Calculate BMI
-					</a>y text-white py-5">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-6">
-				<h1 class="display-4 fw-bold mb-4">
-					Welcome to Health Toolkit
-				</h1>
-				<p class="lead mb-4">
-					Your all-in-one platform for physical fitness, mental
-					wellness, nutrition, and health monitoring.
-				</p>
-				<div class="d-flex flex-wrap gap-3">
-					<a
-						href="{{ url_for('exercises') }}"
-						class="btn btn-light btn-lg"
-					>
-						<i class="fas fa-dumbbell me-2"></i>Start Exercising
-					</a>
-					<a
-						href="{{ url_for('report') }}"
-						class="btn btn-outline-light btn-lg"
-					>
-						<i class="fas fa-chart-line me-2"></i>Health Report
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-6 text-center">
-				<i class="fas fa-heartbeat display-1 opacity-75"></i>
-			</div>
-		</div>
-	</div>
+<div class="hero-section bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Welcome to Health Toolkit</h1>
+                <p class="lead mb-4">Your all-in-one platform for physical fitness, mental wellness, nutrition, and health monitoring.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{{ url_for('exercises') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-dumbbell me-2"></i>Start Exercising
+                    </a>
+                    <a href="{{ url_for('report') }}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-chart-line me-2"></i>Health Report
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <i class="fas fa-heartbeat display-1 opacity-75"></i>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="container py-5">
