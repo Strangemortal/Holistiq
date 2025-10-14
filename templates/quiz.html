@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+{% block title %}Mental Health Quiz{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-4">Mental Health Quiz</h1>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-soft">
+                <div class="card-body p-5">
+                    <form id="quiz-form">
+                        <div class="mb-4">
+                            <p class="fw-bold">1. How often have you been bothered by feeling down, depressed, or hopeless in the last two weeks?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q1" id="q1a" value="0">
+                                <label class="form-check-label" for="q1a">Not at all</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q1" id="q1b" value="1">
+                                <label class="form-check-label" for="q1b">Several days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q1" id="q1c" value="2">
+                                <label class="form-check-label" for="q1c">More than half the days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q1" id="q1d" value="3">
+                                <label class="form-check-label" for="q1d">Nearly every day</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">2. How often have you been bothered by having little interest or pleasure in doing things in the last two weeks?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q2" id="q2a" value="0">
+                                <label class="form-check-label" for="q2a">Not at all</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q2" id="q2b" value="1">
+                                <label class="form-check-label" for="q2b">Several days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q2" id="q2c" value="2">
+                                <label class="form-check-label" for="q2c">More than half the days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q2" id="q2d" value="3">
+                                <label class="form-check-label" for="q2d">Nearly every day</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">3. How often have you been bothered by trouble falling or staying asleep, or sleeping too much in the last two weeks?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q3" id="q3a" value="0">
+                                <label class="form-check-label" for="q3a">Not at all</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q3" id="q3b" value="1">
+                                <label class="form-check-label" for="q3b">Several days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q3" id="q3c" value="2">
+                                <label class="form-check-label" for="q3c">More than half the days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q3" id="q3d" value="3">
+                                <label class="form-check-label" for="q3d">Nearly every day</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">4. How often have you been bothered by feeling tired or having little energy in the last two weeks?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q4" id="q4a" value="0">
+                                <label class="form-check-label" for="q4a">Not at all</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q4" id="q4b" value="1">
+                                <label class="form-check-label" for="q4b">Several days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q4" id="q4c" value="2">
+                                <label class="form-check-label" for="q4c">More than half the days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q4" id="q4d" value="3">
+                                <label class="form-check-label" for="q4d">Nearly every day</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">5. How often have you been bothered by poor appetite or overeating in the last two weeks?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q5" id="q5a" value="0">
+                                <label class="form-check-label" for="q5a">Not at all</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q5" id="q5b" value="1">
+                                <label class="form-check-label" for="q5b">Several days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q5" id="q5c" value="2">
+                                <label class="form-check-label" for="q5c">More than half the days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q5" id="q5d" value="3">
+                                <label class="form-check-label" for="q5d">Nearly every day</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">6. How often have you been bothered by feeling bad about yourself, or that you are a failure or have let yourself or your family down in the last two weeks?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q6" id="q6a" value="0">
+                                <label class="form-check-label" for="q6a">Not at all</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q6" id="q6b" value="1">
+                                <label class="form-check-label" for="q6b">Several days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q6" id="q6c" value="2">
+                                <label class="form-check-label" for="q6c">More than half the days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q6" id="q6d" value="3">
+                                <label class="form-check-label" for="q6d">Nearly every day</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">7. How often have you been bothered by trouble concentrating on things, such as reading the newspaper or watching television in the last two weeks?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q7" id="q7a" value="0">
+                                <label class="form-check-label" for="q7a">Not at all</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q7" id="q7b" value="1">
+                                <label class="form-check-label" for="q7b">Several days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q7" id="q7c" value="2">
+                                <label class="form-check-label" for="q7c">More than half the days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q7" id="q7d" value="3">
+                                <label class="form-check-label" for="q7d">Nearly every day</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">8. How often have you been bothered by moving or speaking so slowly that other people could have noticed? Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual in the last two weeks?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q8" id="q8a" value="0">
+                                <label class="form-check-label" for="q8a">Not at all</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q8" id="q8b" value="1">
+                                <label class="form-check-label" for="q8b">Several days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q8" id="q8c" value="2">
+                                <label class="form-check-label" for="q8c">More than half the days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q8" id="q8d" value="3">
+                                <label class="form-check-label" for="q8d">Nearly every day</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">9. How often have you been bothered by thoughts that you would be better off dead, or of hurting yourself in some way in the last two weeks?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q9" id="q9a" value="0">
+                                <label class="form-check-label" for="q9a">Not at all</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q9" id="q9b" value="1">
+                                <label class="form-check-label" for="q9b">Several days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q9" id="q9c" value="2">
+                                <label class="form-check-label" for="q9c">More than half the days</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q9" id="q9d" value="3">
+                                <label class="form-check-label" for="q9d">Nearly every day</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-bold">10. How difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q10" id="q10a" value="0">
+                                <label class="form-check-label" for="q10a">Not difficult at all</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q10" id="q10b" value="1">
+                                <label class="form-check-label" for="q10b">Somewhat difficult</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q10" id="q10c" value="2">
+                                <label class="form-check-label" for="q10c">Very difficult</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q10" id="q10d" value="3">
+                                <label class="form-check-label" for="q10d">Extremely difficult</label>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="button" class="btn btn-primary" onclick="calculateScore()">Submit</button>
+                        </div>
+                    </form>
+                    <div id="quiz-result" class="mt-5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function calculateScore() {
+        let totalScore = 0;
+        const form = document.getElementById('quiz-form');
+        const resultDiv = document.getElementById('quiz-result');
+
+        for (let i = 1; i <= 10; i++) {
+            const question = form.elements['q' + i];
+            let answered = false;
+            for (const option of question) {
+                if (option.checked) {
+                    totalScore += parseInt(option.value);
+                    answered = true;
+                    break;
+                }
+            }
+            if (!answered) {
+                resultDiv.innerHTML = '<div class="alert alert-danger">Please answer all questions.</div>';
+                return;
+            }
+        }
+
+        const mentalHealthScore = 10 - (totalScore / 30 * 10);
+
+        let resultHTML = `
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center">Your Mental Health Score</h3>
+                    <p class="text-center display-4">${mentalHealthScore.toFixed(1)}/10</p>
+        `;
+
+        if (mentalHealthScore >= 8) {
+            resultHTML += '<p class="text-center">You seem to be in a good mental state. Keep up the positive habits!</p>';
+        } else if (mentalHealthScore >= 5) {
+            resultHTML += '<p class="text-center">You may be experiencing some signs of mental distress. Consider talking to someone you trust or a professional.</p>';
+        } else {
+            resultHTML += '<p class="text-center">Your score indicates that you may be at risk of a mental health condition. It is highly recommended to seek professional help.</p>';
+        }
+
+        resultHTML += '</div></div>';
+        resultDiv.innerHTML = resultHTML;
+    }
+</script>
+{% endblock %}

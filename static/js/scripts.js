@@ -13,6 +13,9 @@ function initializeHealthToolkit() {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
 
+    // Initialize health dashboard
+    initializeHealthDashboard();
+
     // Initialize chat functionality
     initializeChat();
     

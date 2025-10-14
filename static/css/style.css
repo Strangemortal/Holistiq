@@ -388,3 +388,13 @@ footer {
 .border-radius-xl {
     border-radius: 1.5rem !important;
 }
+
+#suggestions-output .card {
+    border-radius: 1rem;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+}
+
+#suggestions-output .list-group-item {
+    border: none;
+    padding: 1rem 1.5rem;
+}
