@@ -40,7 +40,7 @@ def create_app(config=None):
     @app.route('/')
     def index():
         """Home page"""
-        return render_template('home.html')
+        return render_template('index.html')
     
     @app.route('/exercises')
     def exercises():
