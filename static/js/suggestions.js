@@ -13,7 +13,9 @@ function getHealthSuggestions() {
     const bmi = calculateBMI(weight, height);
     const bmiCategory = getBMICategory(bmi);
 
-    let suggestions = `
+    let suggestions = [];
+
+    suggestions.push(`
         <div class="card">
             <div class="card-body">
                 <h3 class="card-title text-center">Your Health Snapshot</h3>
@@ -23,30 +25,30 @@ function getHealthSuggestions() {
                 <hr>
                 <h4 class="mt-4">Suggestions for You:</h4>
                 <ul class="list-group list-group-flush">
-    `;
+    `);
 
     // Physical Health Suggestions
     if (bmi < 18.5) {
-        suggestions += '<li class="list-group-item"><strong>Physical Health:</strong> You are in the underweight range. It is recommended to consult a nutritionist to ensure you are getting enough nutrients. Consider incorporating more calorie-dense, nutritious foods into your diet.</li>';
+        suggestions.push('<li class="list-group-item"><strong>Physical Health:</strong> You are in the underweight range. It is recommended to consult a nutritionist to ensure you are getting enough nutrients. Consider incorporating more calorie-dense, nutritious foods into your diet.</li>');
     } else if (bmi >= 18.5 && bmi < 25) {
-        suggestions += '<li class="list-group-item"><strong>Physical Health:</strong> Your BMI is in a healthy range. Keep up the great work! Maintain a balanced diet and regular physical activity.</li>';
+        suggestions.push('<li class="list-group-item"><strong>Physical Health:</strong> Your BMI is in a healthy range. Keep up the great work! Maintain a balanced diet and regular physical activity.</li>');
     } else if (bmi >= 25 && bmi < 30) {
-        suggestions += '<li class="list-group-item"><strong>Physical Health:</strong> You are in the overweight range. Consider a combination of a balanced, calorie-controlled diet and regular exercise. Our exercise and recipe sections are a great place to start.</li>';
+        suggestions.push('<li class="list-group-item"><strong>Physical Health:</strong> You are in the overweight range. Consider a combination of a balanced, calorie-controlled diet and regular exercise. Our exercise and recipe sections are a great place to start.</li>');
     } else {
-        suggestions += '<li class="list-group-item"><strong>Physical Health:</strong> You are in the obese range. It is highly recommended to consult a healthcare professional. A structured plan for diet and exercise is important for your health.</li>';
+        suggestions.push('<li class="list-group-item"><strong>Physical Health:</strong> You are in the obese range. It is highly recommended to consult a healthcare professional. A structured plan for diet and exercise is important for your health.</li>');
     }
 
     // Mental Health Suggestions
     if (mentalPoints <= 4) {
-        suggestions += '<li class="list-group-item"><strong>Mental Wellness:</strong> You've indicated a lower level of mental wellness. It's important to prioritize your mental health. Explore our mental health section for quizzes and resources. Consider talking to a friend, family member, or a mental health professional.</li>';
+        suggestions.push('<li class="list-group-item"><strong>Mental Wellness:</strong> You've indicated a lower level of mental wellness. It's important to prioritize your mental health. Explore our mental health section for quizzes and resources. Consider talking to a friend, family member, or a mental health professional.</li>');
     } else if (mentalPoints > 4 && mentalPoints <= 7) {
-        suggestions += '<li class="list-group-item"><strong>Mental Wellness:</strong> You're in a moderate range for mental wellness. There are always ways to improve. Our yoga and meditation sessions can be a great way to manage stress and improve focus.</li>';
+        suggestions.push('<li class="list-group-item"><strong>Mental Wellness:</strong> You're in a moderate range for mental wellness. There are always ways to improve. Our yoga and meditation sessions can be a great way to manage stress and improve focus.</li>');
     } else {
-        suggestions += '<li class="list-group-item"><strong>Mental Wellness:</strong> It's great that you're feeling positive about your mental wellness. To maintain this, continue practicing self-care, and consider our guided meditations to further enhance your well-being.</li>';
+        suggestions.push('<li class="list-group-item"><strong>Mental Wellness:</strong> It's great that you're feeling positive about your mental wellness. To maintain this, continue practicing self-care, and consider our guided meditations to further enhance your well-being.</li>');
     }
 
-    suggestions += '</ul></div></div>';
-    suggestionsOutput.innerHTML = suggestions;
+    suggestions.push('</ul></div></div>');
+    suggestionsOutput.innerHTML = suggestions.join('');
 }
 
 function calculateBMI(weight, height) {
