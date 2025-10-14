@@ -22,6 +22,39 @@
     </div>
 </div>
 
+<!-- Health Input Section -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-soft">
+                <div class="card-body p-5">
+                    <h2 class="text-center mb-4">Health & Wellness Check-in</h2>
+                    <form id="health-form">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="weight" class="form-label">Weight (kg)</label>
+                                <input type="number" class="form-control" id="weight" placeholder="Enter your weight" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="height" class="form-label">Height (cm)</label>
+                                <input type="number" class="form-control" id="height" placeholder="Enter your height" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="mental-points" class="form-label">Mental Wellness Score (1-10): <span id="mental-points-value">6</span></label>
+                                <input type="range" class="form-range" id="mental-points" min="1" max="10" step="1" oninput="document.getElementById('mental-points-value').textContent = this.value">
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="button" class="btn btn-primary btn-lg" onclick="getHealthSuggestions()">Get Suggestions</button>
+                        </div>
+                    </form>
+                    <div id="suggestions-output" class="mt-5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container py-5">
 	<!-- Features Grid -->
 	<div class="row g-4 mb-5">
@@ -191,6 +224,8 @@
 	</div>
 </div>
 {% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/suggestions.js') }}"></script>
+{% endblock %}
 <script>
 	
 </script>

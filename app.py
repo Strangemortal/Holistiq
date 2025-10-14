@@ -45,7 +45,7 @@ def create_app(config=None):
     @app.route('/exercises')
     def exercises():
         """Exercise library page"""
-        return render_template('exercises.html')
+        return render_template('exercise.html')
     
     @app.route('/yoga')
     def yoga():
@@ -65,7 +65,7 @@ def create_app(config=None):
     @app.route('/report')
     def report():
         """Health reports page"""
-        return render_template('report.html')
+        return render_template('reports.html')
     
     # API Routes
     @app.route('/api/bmi', methods=['POST'])
