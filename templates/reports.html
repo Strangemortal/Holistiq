@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}Reports - Holistiq{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-5">
+            <i class="bi bi-file-earmark-bar-graph"></i> Health Reports
+        </h1>
+
+        <!-- Export Buttons -->
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">
+                            <i class="bi bi-download"></i> Export Your Health Data
+                        </h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="lead mb-4">Download your complete health report in your preferred format</p>
+                        <div class="btn-group-vertical btn-group-lg w-100 w-md-auto" role="group">
+                            <button class="btn btn-danger mb-2" id="exportPDF">
+                                <i class="bi bi-file-pdf"></i> Export as PDF
+                            </button>
+                            <button class="btn btn-success" id="exportJSON">
+                                <i class="bi bi-filetype-json"></i> Export as JSON
+                            </button>
+                        </div>
+                        <div id="exportMessage" class="alert mt-3" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BMI Records -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h4 class="mb-0">
+                            <i class="bi bi-calculator"></i> BMI Records
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="bmiRecordsTable">
+                            <div class="text-center text-muted">
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="mt-2">Loading BMI records...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Workout Records -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0">
+                            <i class="bi bi-person-walking"></i> Workout Records
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="workoutRecordsTable">
+                            <div class="text-center text-muted">
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="mt-2">Loading workout records...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meditation Records -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header text-white" style="background-color: #9b59b6;">
+                        <h4 class="mb-0">
+                            <i class="bi bi-heart"></i> Meditation Records
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="meditationRecordsTable">
+                            <div class="text-center text-muted">
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="mt-2">Loading meditation records...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Summary -->
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h4 class="card-title text-center mb-4">
+                            <i class="bi bi-graph-up"></i> Your Health Journey
+                        </h4>
+                        <div class="row text-center">
+                            <div class="col-md-4 mb-3">
+                                <div class="stat-card">
+                                    <i class="bi bi-calculator display-4 text-info"></i>
+                                    <h3 class="mt-3" id="totalBMI">0</h3>
+                                    <p>BMI Calculations</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="stat-card">
+                                    <i class="bi bi-stopwatch display-4 text-success"></i>
+                                    <h3 class="mt-3" id="totalWorkouts">0</h3>
+                                    <p>Workouts Completed</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="stat-card">
+                                    <i class="bi bi-heart-pulse display-4" style="color: #9b59b6;"></i>
+                                    <h3 class="mt-3" id="totalMeditations">0</h3>
+                                    <p>Meditation Sessions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/reports.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,279 @@
+{% extends "base.html" %}
+
+{% block title %}Recipes - Holistiq{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-5">
+            <i class="bi bi-egg-fried"></i> Healthy Recipes
+        </h1>
+
+        <!-- Recipe Categories -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-3">
+                <div class="card text-center h-100 category-card">
+                    <div class="card-body">
+                        <i class="bi bi-sunrise display-4 text-warning"></i>
+                        <h5 class="card-title mt-3">Breakfast</h5>
+                        <p class="card-text">Start your day right</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center h-100 category-card">
+                    <div class="card-body">
+                        <i class="bi bi-cup-hot display-4 text-success"></i>
+                        <h5 class="card-title mt-3">Smoothies</h5>
+                        <p class="card-text">Nutritious & delicious</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center h-100 category-card">
+                    <div class="card-body">
+                        <i class="bi bi-bowl-hot-fill display-4 text-danger"></i>
+                        <h5 class="card-title mt-3">Main Meals</h5>
+                        <p class="card-text">Balanced & satisfying</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center h-100 category-card">
+                    <div class="card-body">
+                        <i class="bi bi-emoji-smile display-4 text-info"></i>
+                        <h5 class="card-title mt-3">Snacks</h5>
+                        <p class="card-text">Healthy bites</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Recipes -->
+        <h2 class="text-center mb-4">Featured Recipes</h2>
+        <div class="row g-4 mb-5">
+            <div class="col-md-6 col-lg-4">
+                <div class="card recipe-card h-100">
+                    <div class="card-body">
+                        <div class="badge bg-warning mb-2">Breakfast</div>
+                        <h5 class="card-title">Overnight Oats with Berries</h5>
+                        <p class="card-text">A nutritious and convenient breakfast packed with fiber and antioxidants.</p>
+                        <hr>
+                        <h6>Ingredients:</h6>
+                        <ul class="small">
+                            <li>1/2 cup rolled oats</li>
+                            <li>1/2 cup almond milk</li>
+                            <li>1/4 cup Greek yogurt</li>
+                            <li>1 tbsp chia seeds</li>
+                            <li>1/2 cup mixed berries</li>
+                            <li>1 tsp honey</li>
+                        </ul>
+                        <h6>Instructions:</h6>
+                        <ol class="small">
+                            <li>Mix oats, milk, yogurt, and chia seeds</li>
+                            <li>Refrigerate overnight</li>
+                            <li>Top with berries and honey</li>
+                            <li>Enjoy cold in the morning</li>
+                        </ol>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success"><i class="bi bi-clock"></i> 5 min</span>
+                            <span class="badge bg-info"><i class="bi bi-fire"></i> 250 cal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card recipe-card h-100">
+                    <div class="card-body">
+                        <div class="badge bg-success mb-2">Smoothie</div>
+                        <h5 class="card-title">Green Power Smoothie</h5>
+                        <p class="card-text">Energizing smoothie loaded with vitamins and minerals.</p>
+                        <hr>
+                        <h6>Ingredients:</h6>
+                        <ul class="small">
+                            <li>1 cup spinach</li>
+                            <li>1 banana</li>
+                            <li>1/2 avocado</li>
+                            <li>1 cup coconut water</li>
+                            <li>1/2 cup pineapple</li>
+                            <li>1 tbsp flax seeds</li>
+                        </ul>
+                        <h6>Instructions:</h6>
+                        <ol class="small">
+                            <li>Add all ingredients to blender</li>
+                            <li>Blend until smooth</li>
+                            <li>Add ice if desired</li>
+                            <li>Serve immediately</li>
+                        </ol>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success"><i class="bi bi-clock"></i> 5 min</span>
+                            <span class="badge bg-info"><i class="bi bi-fire"></i> 200 cal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card recipe-card h-100">
+                    <div class="card-body">
+                        <div class="badge bg-danger mb-2">Main Meal</div>
+                        <h5 class="card-title">Grilled Salmon with Quinoa</h5>
+                        <p class="card-text">Protein-rich meal with omega-3 fatty acids and complete protein.</p>
+                        <hr>
+                        <h6>Ingredients:</h6>
+                        <ul class="small">
+                            <li>6 oz salmon fillet</li>
+                            <li>1 cup cooked quinoa</li>
+                            <li>2 cups mixed vegetables</li>
+                            <li>1 lemon</li>
+                            <li>2 tbsp olive oil</li>
+                            <li>Herbs & spices</li>
+                        </ul>
+                        <h6>Instructions:</h6>
+                        <ol class="small">
+                            <li>Season salmon with herbs</li>
+                            <li>Grill for 4-5 minutes per side</li>
+                            <li>Sauté vegetables in olive oil</li>
+                            <li>Serve over quinoa with lemon</li>
+                        </ol>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success"><i class="bi bi-clock"></i> 25 min</span>
+                            <span class="badge bg-info"><i class="bi bi-fire"></i> 450 cal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card recipe-card h-100">
+                    <div class="card-body">
+                        <div class="badge bg-danger mb-2">Main Meal</div>
+                        <h5 class="card-title">Chickpea Buddha Bowl</h5>
+                        <p class="card-text">Vegan-friendly bowl packed with plant-based protein and nutrients.</p>
+                        <hr>
+                        <h6>Ingredients:</h6>
+                        <ul class="small">
+                            <li>1 cup chickpeas</li>
+                            <li>1 cup brown rice</li>
+                            <li>1 sweet potato, cubed</li>
+                            <li>1 cup kale</li>
+                            <li>1/4 cup tahini</li>
+                            <li>Cherry tomatoes</li>
+                        </ul>
+                        <h6>Instructions:</h6>
+                        <ol class="small">
+                            <li>Roast chickpeas and sweet potato</li>
+                            <li>Cook rice according to package</li>
+                            <li>Massage kale with olive oil</li>
+                            <li>Assemble bowl and drizzle tahini</li>
+                        </ol>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success"><i class="bi bi-clock"></i> 30 min</span>
+                            <span class="badge bg-info"><i class="bi bi-fire"></i> 420 cal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card recipe-card h-100">
+                    <div class="card-body">
+                        <div class="badge bg-info mb-2">Snack</div>
+                        <h5 class="card-title">Energy Balls</h5>
+                        <p class="card-text">No-bake snacks perfect for pre or post-workout energy boost.</p>
+                        <hr>
+                        <h6>Ingredients:</h6>
+                        <ul class="small">
+                            <li>1 cup dates, pitted</li>
+                            <li>1 cup almonds</li>
+                            <li>2 tbsp cacao powder</li>
+                            <li>2 tbsp coconut oil</li>
+                            <li>1 tsp vanilla extract</li>
+                            <li>Pinch of salt</li>
+                        </ul>
+                        <h6>Instructions:</h6>
+                        <ol class="small">
+                            <li>Blend all ingredients in food processor</li>
+                            <li>Roll into small balls</li>
+                            <li>Refrigerate for 30 minutes</li>
+                            <li>Store in airtight container</li>
+                        </ol>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success"><i class="bi bi-clock"></i> 15 min</span>
+                            <span class="badge bg-info"><i class="bi bi-fire"></i> 120 cal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card recipe-card h-100">
+                    <div class="card-body">
+                        <div class="badge bg-info mb-2">Snack</div>
+                        <h5 class="card-title">Hummus & Veggies</h5>
+                        <p class="card-text">Classic healthy snack with protein-rich hummus and fresh vegetables.</p>
+                        <hr>
+                        <h6>Ingredients:</h6>
+                        <ul class="small">
+                            <li>1 can chickpeas</li>
+                            <li>2 tbsp tahini</li>
+                            <li>2 cloves garlic</li>
+                            <li>2 tbsp lemon juice</li>
+                            <li>2 tbsp olive oil</li>
+                            <li>Assorted veggie sticks</li>
+                        </ul>
+                        <h6>Instructions:</h6>
+                        <ol class="small">
+                            <li>Blend chickpeas, tahini, garlic, lemon</li>
+                            <li>Add olive oil while blending</li>
+                            <li>Season with salt and paprika</li>
+                            <li>Serve with carrot, celery, cucumber</li>
+                        </ol>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success"><i class="bi bi-clock"></i> 10 min</span>
+                            <span class="badge bg-info"><i class="bi bi-fire"></i> 150 cal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nutrition Tips -->
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h4 class="card-title text-center mb-4">
+                            <i class="bi bi-lightbulb-fill text-warning"></i> Nutrition Tips
+                        </h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="text-success">
+                                    <i class="bi bi-check-circle-fill"></i> Do's
+                                </h5>
+                                <ul>
+                                    <li>Eat a variety of colorful fruits and vegetables</li>
+                                    <li>Choose whole grains over refined grains</li>
+                                    <li>Include lean proteins in every meal</li>
+                                    <li>Drink plenty of water throughout the day</li>
+                                    <li>Plan and prepare meals in advance</li>
+                                    <li>Eat mindfully and without distractions</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="text-danger">
+                                    <i class="bi bi-x-circle-fill"></i> Don'ts
+                                </h5>
+                                <ul>
+                                    <li>Avoid excessive processed foods</li>
+                                    <li>Limit added sugars and artificial sweeteners</li>
+                                    <li>Don't skip meals, especially breakfast</li>
+                                    <li>Avoid eating late at night</li>
+                                    <li>Minimize trans fats and excessive sodium</li>
+                                    <li>Don't rely on fad diets</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

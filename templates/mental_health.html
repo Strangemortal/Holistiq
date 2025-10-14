@@ -1,0 +1,287 @@
+{% extends "base.html" %}
+
+{% block title %}Mental Health - Holistiq{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-5">
+            <i class="bi bi-heart"></i> Mental Health & Wellness
+        </h1>
+
+        <!-- Meditation Timer -->
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow">
+                    <div class="card-header bg-purple text-white" style="background-color: #9b59b6;">
+                        <h3 class="mb-0">
+                            <i class="bi bi-stopwatch"></i> Meditation Timer
+                        </h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="mb-4">
+                            <select class="form-select form-select-lg" id="meditationType">
+                                <option value="Mindfulness">Mindfulness Meditation</option>
+                                <option value="Breathing">Breathing Exercise</option>
+                                <option value="Body Scan">Body Scan</option>
+                                <option value="Loving-kindness">Loving-kindness</option>
+                                <option value="Visualization">Visualization</option>
+                                <option value="Mantra">Mantra Meditation</option>
+                            </select>
+                        </div>
+                        <div class="timer-display mb-4">
+                            <h1 class="display-1 fw-bold" id="meditationTimer">00:00</h1>
+                        </div>
+                        <div class="btn-group mb-3" role="group">
+                            <button class="btn btn-success btn-lg" id="startMeditation">
+                                <i class="bi bi-play-fill"></i> Start
+                            </button>
+                            <button class="btn btn-warning btn-lg" id="pauseMeditation" disabled>
+                                <i class="bi bi-pause-fill"></i> Pause
+                            </button>
+                            <button class="btn btn-danger btn-lg" id="stopMeditation" disabled>
+                                <i class="bi bi-stop-fill"></i> Stop
+                            </button>
+                        </div>
+                        <div id="meditationMessage" class="alert alert-info" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meditation Techniques -->
+        <h2 class="text-center mb-4">Meditation Techniques</h2>
+        <div class="row g-4 mb-5">
+            <div class="col-md-6">
+                <div class="card h-100 border-primary">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-brain"></i> Mindfulness Meditation
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Focus:</strong> Present moment awareness</p>
+                        <p><strong>Duration:</strong> 10-20 minutes</p>
+                        <p><strong>How to practice:</strong></p>
+                        <ol>
+                            <li>Find a quiet, comfortable place to sit</li>
+                            <li>Focus on your breath or a specific sensation</li>
+                            <li>Notice when your mind wanders</li>
+                            <li>Gently return focus without judgment</li>
+                            <li>Continue for the duration</li>
+                        </ol>
+                        <p><strong>Benefits:</strong> Reduces stress, improves focus, enhances emotional regulation</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100 border-success">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-wind"></i> Breathing Meditation
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Focus:</strong> Breath awareness</p>
+                        <p><strong>Duration:</strong> 5-15 minutes</p>
+                        <p><strong>How to practice:</strong></p>
+                        <ol>
+                            <li>Sit comfortably with a straight spine</li>
+                            <li>Close your eyes gently</li>
+                            <li>Breathe naturally through your nose</li>
+                            <li>Count breaths (1-10, then repeat)</li>
+                            <li>Notice the sensation of each breath</li>
+                        </ol>
+                        <p><strong>Benefits:</strong> Calms nervous system, reduces anxiety, improves lung capacity</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100 border-info">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-person"></i> Body Scan Meditation
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Focus:</strong> Physical sensations</p>
+                        <p><strong>Duration:</strong> 15-30 minutes</p>
+                        <p><strong>How to practice:</strong></p>
+                        <ol>
+                            <li>Lie down in a comfortable position</li>
+                            <li>Start focusing on your toes</li>
+                            <li>Gradually move attention up your body</li>
+                            <li>Notice any sensations without judgment</li>
+                            <li>Release tension as you scan</li>
+                        </ol>
+                        <p><strong>Benefits:</strong> Releases physical tension, improves body awareness, aids sleep</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100 border-danger">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-heart-fill"></i> Loving-kindness Meditation
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Focus:</strong> Compassion and goodwill</p>
+                        <p><strong>Duration:</strong> 10-20 minutes</p>
+                        <p><strong>How to practice:</strong></p>
+                        <ol>
+                            <li>Sit comfortably and close your eyes</li>
+                            <li>Generate feelings of kindness toward yourself</li>
+                            <li>Repeat phrases like "May I be happy"</li>
+                            <li>Extend these wishes to others</li>
+                            <li>Include all beings in your practice</li>
+                        </ol>
+                        <p><strong>Benefits:</strong> Increases positive emotions, reduces negative bias, improves relationships</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mental Health Resources -->
+        <div class="row mb-5">
+            <div class="col-lg-10 mx-auto">
+                <div class="card shadow">
+                    <div class="card-header" style="background-color: #9b59b6; color: white;">
+                        <h3 class="mb-0">
+                            <i class="bi bi-journal-medical"></i> Mental Wellness Tips
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <h5 class="text-primary">
+                                    <i class="bi bi-moon-stars"></i> Better Sleep
+                                </h5>
+                                <ul>
+                                    <li>Maintain consistent sleep schedule</li>
+                                    <li>Create a relaxing bedtime routine</li>
+                                    <li>Limit screen time before bed</li>
+                                    <li>Keep bedroom cool and dark</li>
+                                    <li>Avoid caffeine in the evening</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5 class="text-success">
+                                    <i class="bi bi-people"></i> Social Connection
+                                </h5>
+                                <ul>
+                                    <li>Spend quality time with loved ones</li>
+                                    <li>Join clubs or community groups</li>
+                                    <li>Practice active listening</li>
+                                    <li>Express gratitude regularly</li>
+                                    <li>Help others when possible</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5 class="text-warning">
+                                    <i class="bi bi-calendar-check"></i> Stress Management
+                                </h5>
+                                <ul>
+                                    <li>Practice regular meditation</li>
+                                    <li>Exercise regularly</li>
+                                    <li>Set realistic goals and priorities</li>
+                                    <li>Take breaks throughout the day</li>
+                                    <li>Learn to say no when needed</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5 class="text-info">
+                                    <i class="bi bi-emoji-smile"></i> Self-Care
+                                </h5>
+                                <ul>
+                                    <li>Do activities you enjoy</li>
+                                    <li>Maintain work-life balance</li>
+                                    <li>Practice self-compassion</li>
+                                    <li>Limit social media use</li>
+                                    <li>Seek professional help when needed</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mindfulness Exercises -->
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h4 class="card-title text-center mb-4">
+                            <i class="bi bi-lightbulb-fill text-warning"></i> Quick Mindfulness Exercises
+                        </h4>
+                        <div class="accordion" id="mindfulnessAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#exercise1">
+                                        5-4-3-2-1 Grounding Technique
+                                    </button>
+                                </h2>
+                                <div id="exercise1" class="accordion-collapse collapse show" data-bs-parent="#mindfulnessAccordion">
+                                    <div class="accordion-body">
+                                        <p>A sensory awareness exercise to help you stay present:</p>
+                                        <ul>
+                                            <li><strong>5 things you can see</strong> - Look around and notice details</li>
+                                            <li><strong>4 things you can touch</strong> - Feel textures around you</li>
+                                            <li><strong>3 things you can hear</strong> - Listen to ambient sounds</li>
+                                            <li><strong>2 things you can smell</strong> - Notice any scents</li>
+                                            <li><strong>1 thing you can taste</strong> - Focus on taste in your mouth</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#exercise2">
+                                        Mindful Breathing (1 minute)
+                                    </button>
+                                </h2>
+                                <div id="exercise2" class="accordion-collapse collapse" data-bs-parent="#mindfulnessAccordion">
+                                    <div class="accordion-body">
+                                        <p>Take a one-minute breathing break:</p>
+                                        <ol>
+                                            <li>Sit comfortably and close your eyes</li>
+                                            <li>Take a deep breath in through your nose (4 counts)</li>
+                                            <li>Hold your breath (2 counts)</li>
+                                            <li>Exhale slowly through your mouth (6 counts)</li>
+                                            <li>Repeat for 1 minute</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#exercise3">
+                                        Progressive Muscle Relaxation
+                                    </button>
+                                </h2>
+                                <div id="exercise3" class="accordion-collapse collapse" data-bs-parent="#mindfulnessAccordion">
+                                    <div class="accordion-body">
+                                        <p>Release physical tension systematically:</p>
+                                        <ol>
+                                            <li>Tense each muscle group for 5 seconds</li>
+                                            <li>Release and notice the difference</li>
+                                            <li>Start with feet and move up to face</li>
+                                            <li>Breathe deeply throughout</li>
+                                            <li>Take your time with each area</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/meditation-timer.js') }}"></script>
+{% endblock %}

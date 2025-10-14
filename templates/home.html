@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Holistiq{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Welcome to Holistiq</h1>
+                <p class="lead mb-4">Your complete health and wellness toolkit. Track your fitness, practice yoga, discover healthy recipes, and improve your mental well-being.</p>
+                <a href="#bmi-calculator" class="btn btn-light btn-lg">
+                    <i class="bi bi-calculator"></i> Try BMI Calculator
+                </a>
+            </div>
+            <div class="col-lg-6 text-center">
+                <i class="bi bi-heart-pulse display-1"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Features</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 feature-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-person-walking feature-icon text-primary"></i>
+                        <h5 class="card-title">Exercise & Workouts</h5>
+                        <p class="card-text">Get customized workout routines with built-in timers to track your sessions.</p>
+                        <a href="{{ url_for('exercise') }}" class="btn btn-outline-primary">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 feature-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-yin-yang feature-icon text-success"></i>
+                        <h5 class="card-title">Yoga Sessions</h5>
+                        <p class="card-text">Practice various yoga styles with guided sessions and pose instructions.</p>
+                        <a href="{{ url_for('yoga') }}" class="btn btn-outline-success">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 feature-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-egg-fried feature-icon text-warning"></i>
+                        <h5 class="card-title">Healthy Recipes</h5>
+                        <p class="card-text">Discover nutritious and delicious recipes for a balanced diet.</p>
+                        <a href="{{ url_for('recipes') }}" class="btn btn-outline-warning">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 feature-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-heart feature-icon text-danger"></i>
+                        <h5 class="card-title">Mental Health</h5>
+                        <p class="card-text">Access meditation exercises and mindfulness practices for better mental health.</p>
+                        <a href="{{ url_for('mental_health') }}" class="btn btn-outline-danger">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 feature-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-file-earmark-bar-graph feature-icon text-info"></i>
+                        <h5 class="card-title">Health Reports</h5>
+                        <p class="card-text">Track your progress and export detailed health reports in PDF or JSON.</p>
+                        <a href="{{ url_for('reports') }}" class="btn btn-outline-info">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 feature-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-robot feature-icon text-secondary"></i>
+                        <h5 class="card-title">Health Assistant</h5>
+                        <p class="card-text">Chat with our AI assistant for instant health and wellness advice.</p>
+                        <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#chatbotModal">Chat Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BMI Calculator Section -->
+<section class="py-5 bg-light" id="bmi-calculator">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">
+                            <i class="bi bi-calculator"></i> BMI Calculator
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="bmiForm">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Weight</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="weight" step="0.1" required>
+                                        <span class="input-group-text" id="weightUnit">kg</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Height</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="height" step="0.1" required>
+                                        <span class="input-group-text" id="heightUnit">cm</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Unit System</label>
+                                <div class="btn-group w-100" role="group">
+                                    <input type="radio" class="btn-check" name="unitSystem" id="metric" value="metric" checked>
+                                    <label class="btn btn-outline-primary" for="metric">Metric (kg/cm)</label>
+                                    
+                                    <input type="radio" class="btn-check" name="unitSystem" id="imperial" value="imperial">
+                                    <label class="btn btn-outline-primary" for="imperial">Imperial (lbs/in)</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="bi bi-calculator"></i> Calculate BMI
+                            </button>
+                        </form>
+                        
+                        <div id="bmiResult" class="mt-4" style="display: none;">
+                            <div class="alert" id="bmiAlert">
+                                <h4 class="alert-heading">Your BMI Result</h4>
+                                <hr>
+                                <p class="mb-0">
+                                    <strong>BMI:</strong> <span id="bmiValue"></span><br>
+                                    <strong>Category:</strong> <span id="bmiCategory"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Why Choose Holistiq?</h2>
+        <div class="row text-center">
+            <div class="col-md-3 mb-4">
+                <div class="stat-card">
+                    <i class="bi bi-check-circle-fill text-success display-4"></i>
+                    <h3 class="mt-3">All-in-One</h3>
+                    <p>Complete health toolkit in one place</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-card">
+                    <i class="bi bi-phone-fill text-primary display-4"></i>
+                    <h3 class="mt-3">Responsive</h3>
+                    <p>Works perfectly on all devices</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-card">
+                    <i class="bi bi-shield-check text-info display-4"></i>
+                    <h3 class="mt-3">Secure</h3>
+                    <p>Your data is safely stored</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-card">
+                    <i class="bi bi-speedometer2 text-warning display-4"></i>
+                    <h3 class="mt-3">Fast</h3>
+                    <p>Lightning-fast performance</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/bmi.js') }}"></script>
+{% endblock %}

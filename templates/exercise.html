@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block title %}Exercise - Holistiq{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-5">
+            <i class="bi bi-person-walking"></i> Exercise & Workouts
+        </h1>
+
+        <!-- Workout Timer -->
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">
+                            <i class="bi bi-stopwatch"></i> Workout Timer
+                        </h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="mb-4">
+                            <select class="form-select form-select-lg" id="exerciseType">
+                                <option value="Cardio">Cardio</option>
+                                <option value="Strength Training">Strength Training</option>
+                                <option value="HIIT">HIIT</option>
+                                <option value="CrossFit">CrossFit</option>
+                                <option value="Running">Running</option>
+                                <option value="Cycling">Cycling</option>
+                            </select>
+                        </div>
+                        <div class="timer-display mb-4">
+                            <h1 class="display-1 fw-bold" id="workoutTimer">00:00</h1>
+                        </div>
+                        <div class="btn-group mb-3" role="group">
+                            <button class="btn btn-success btn-lg" id="startWorkout">
+                                <i class="bi bi-play-fill"></i> Start
+                            </button>
+                            <button class="btn btn-warning btn-lg" id="pauseWorkout" disabled>
+                                <i class="bi bi-pause-fill"></i> Pause
+                            </button>
+                            <button class="btn btn-danger btn-lg" id="stopWorkout" disabled>
+                                <i class="bi bi-stop-fill"></i> Stop
+                            </button>
+                        </div>
+                        <div id="workoutMessage" class="alert alert-info" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise Programs -->
+        <h2 class="text-center mb-4">Popular Workout Programs</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-heart-pulse display-4 text-danger"></i>
+                        </div>
+                        <h5 class="card-title">Cardio Blast</h5>
+                        <p class="card-text">High-intensity cardio workout to burn calories and improve cardiovascular health.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Duration: 30 minutes</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Intensity: High</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Equipment: None</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-trophy display-4 text-warning"></i>
+                        </div>
+                        <h5 class="card-title">Strength Builder</h5>
+                        <p class="card-text">Build muscle and increase strength with this comprehensive resistance training program.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Duration: 45 minutes</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Intensity: Medium</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Equipment: Weights</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-lightning-charge display-4 text-primary"></i>
+                        </div>
+                        <h5 class="card-title">HIIT Power</h5>
+                        <p class="card-text">High-Intensity Interval Training for maximum fat burning and metabolic boost.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Duration: 20 minutes</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Intensity: Very High</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Equipment: None</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-person-running display-4 text-info"></i>
+                        </div>
+                        <h5 class="card-title">Endurance Run</h5>
+                        <p class="card-text">Build stamina and endurance with structured running intervals.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Duration: 40 minutes</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Intensity: Medium</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Equipment: Running shoes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-bicycle display-4 text-success"></i>
+                        </div>
+                        <h5 class="card-title">Cycling Challenge</h5>
+                        <p class="card-text">Low-impact cardio workout perfect for all fitness levels.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Duration: 35 minutes</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Intensity: Medium</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Equipment: Bike</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-star display-4 text-danger"></i>
+                        </div>
+                        <h5 class="card-title">Core Crusher</h5>
+                        <p class="card-text">Strengthen your core with targeted abdominal and back exercises.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Duration: 25 minutes</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Intensity: High</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Equipment: Mat</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise Tips -->
+        <div class="row mt-5">
+            <div class="col-lg-10 mx-auto">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <i class="bi bi-lightbulb"></i> Exercise Tips
+                        </h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-transparent">
+                                <strong>Warm up properly:</strong> Always start with 5-10 minutes of light cardio and dynamic stretching.
+                            </li>
+                            <li class="list-group-item bg-transparent">
+                                <strong>Stay hydrated:</strong> Drink water before, during, and after your workout.
+                            </li>
+                            <li class="list-group-item bg-transparent">
+                                <strong>Listen to your body:</strong> If something hurts, stop and rest.
+                            </li>
+                            <li class="list-group-item bg-transparent">
+                                <strong>Be consistent:</strong> Aim for at least 150 minutes of moderate exercise per week.
+                            </li>
+                            <li class="list-group-item bg-transparent">
+                                <strong>Cool down:</strong> End with 5-10 minutes of stretching to prevent injury.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/workout-timer.js') }}"></script>
+{% endblock %}

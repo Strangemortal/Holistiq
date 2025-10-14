@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block title %}Yoga - Holistiq{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-5">
+            <i class="bi bi-yin-yang"></i> Yoga & Mindfulness
+        </h1>
+
+        <!-- Yoga Styles -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card h-100 border-success">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Hatha Yoga</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">A gentle introduction to basic yoga postures. Perfect for beginners.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-clock"></i> Duration: 30-45 minutes</li>
+                            <li><i class="bi bi-speedometer"></i> Pace: Slow</li>
+                            <li><i class="bi bi-graph-up"></i> Level: Beginner</li>
+                        </ul>
+                        <h6>Key Poses:</h6>
+                        <ul class="small">
+                            <li>Mountain Pose (Tadasana)</li>
+                            <li>Downward Dog (Adho Mukha Svanasana)</li>
+                            <li>Warrior I (Virabhadrasana I)</li>
+                            <li>Child's Pose (Balasana)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-warning">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">Vinyasa Yoga</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Dynamic flow connecting breath with movement. More challenging and energetic.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-clock"></i> Duration: 45-60 minutes</li>
+                            <li><i class="bi bi-speedometer"></i> Pace: Moderate-Fast</li>
+                            <li><i class="bi bi-graph-up"></i> Level: Intermediate</li>
+                        </ul>
+                        <h6>Key Poses:</h6>
+                        <ul class="small">
+                            <li>Sun Salutation (Surya Namaskar)</li>
+                            <li>Plank Pose (Phalakasana)</li>
+                            <li>Warrior II (Virabhadrasana II)</li>
+                            <li>Triangle Pose (Trikonasana)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-info">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">Restorative Yoga</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Relaxing practice using props to support the body in restful poses.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-clock"></i> Duration: 60-75 minutes</li>
+                            <li><i class="bi bi-speedometer"></i> Pace: Very Slow</li>
+                            <li><i class="bi bi-graph-up"></i> Level: All Levels</li>
+                        </ul>
+                        <h6>Key Poses:</h6>
+                        <ul class="small">
+                            <li>Supported Child's Pose</li>
+                            <li>Legs-Up-The-Wall (Viparita Karani)</li>
+                            <li>Reclining Bound Angle</li>
+                            <li>Savasana (Corpse Pose)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Breathing Exercises -->
+        <div class="row mb-5">
+            <div class="col-lg-10 mx-auto">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">
+                            <i class="bi bi-wind"></i> Pranayama (Breathing Exercises)
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="accordion" id="breathingAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#breath1">
+                                        Deep Belly Breathing (Diaphragmatic Breathing)
+                                    </button>
+                                </h2>
+                                <div id="breath1" class="accordion-collapse collapse show" data-bs-parent="#breathingAccordion">
+                                    <div class="accordion-body">
+                                        <p><strong>Benefits:</strong> Reduces stress, lowers blood pressure, improves core muscle stability</p>
+                                        <p><strong>How to practice:</strong></p>
+                                        <ol>
+                                            <li>Sit or lie down comfortably</li>
+                                            <li>Place one hand on your chest and one on your belly</li>
+                                            <li>Breathe in slowly through your nose, letting your belly expand</li>
+                                            <li>Exhale slowly through your mouth</li>
+                                            <li>Repeat for 5-10 minutes</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#breath2">
+                                        Alternate Nostril Breathing (Nadi Shodhana)
+                                    </button>
+                                </h2>
+                                <div id="breath2" class="accordion-collapse collapse" data-bs-parent="#breathingAccordion">
+                                    <div class="accordion-body">
+                                        <p><strong>Benefits:</strong> Balances left and right brain, reduces anxiety, improves focus</p>
+                                        <p><strong>How to practice:</strong></p>
+                                        <ol>
+                                            <li>Sit comfortably with a straight spine</li>
+                                            <li>Close your right nostril with your thumb</li>
+                                            <li>Inhale through your left nostril</li>
+                                            <li>Close left nostril, open right, exhale through right</li>
+                                            <li>Inhale through right, switch, exhale through left</li>
+                                            <li>Repeat for 5-10 rounds</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#breath3">
+                                        Box Breathing (Square Breathing)
+                                    </button>
+                                </h2>
+                                <div id="breath3" class="accordion-collapse collapse" data-bs-parent="#breathingAccordion">
+                                    <div class="accordion-body">
+                                        <p><strong>Benefits:</strong> Calms nervous system, improves concentration, reduces stress</p>
+                                        <p><strong>How to practice:</strong></p>
+                                        <ol>
+                                            <li>Inhale for 4 counts</li>
+                                            <li>Hold breath for 4 counts</li>
+                                            <li>Exhale for 4 counts</li>
+                                            <li>Hold empty for 4 counts</li>
+                                            <li>Repeat for 5-10 minutes</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefits of Yoga -->
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h4 class="card-title text-center mb-4">
+                            <i class="bi bi-star-fill text-warning"></i> Benefits of Regular Yoga Practice
+                        </h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="text-success">Physical Benefits</h5>
+                                <ul>
+                                    <li>Improved flexibility and balance</li>
+                                    <li>Increased muscle strength and tone</li>
+                                    <li>Better respiration and energy</li>
+                                    <li>Cardio and circulatory health</li>
+                                    <li>Improved athletic performance</li>
+                                    <li>Protection from injury</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="text-primary">Mental Benefits</h5>
+                                <ul>
+                                    <li>Stress reduction and management</li>
+                                    <li>Increased body awareness</li>
+                                    <li>Better concentration and focus</li>
+                                    <li>Enhanced mood and well-being</li>
+                                    <li>Improved sleep quality</li>
+                                    <li>Greater self-confidence</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
