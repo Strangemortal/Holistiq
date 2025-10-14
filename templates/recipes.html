@@ -1,0 +1,403 @@
+{% extends "base.html" %}
+
+{% block title %}Healthy Recipes - Health Toolkit{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-5">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold text-center mb-3">Healthy Recipes</h1>
+            <p class="lead text-center text-muted">Nourish your body with delicious and nutritious meals</p>
+        </div>
+    </div>
+
+    <!-- Filter Options -->
+    <div class="row mb-4">
+        <div class="col-md-8 mx-auto">
+            <div class="filter-bar">
+                <ul class="nav nav-pills justify-content-center mb-3" id="recipeTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#all-recipes">All Recipes</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#breakfast">Breakfast</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#lunch">Lunch</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#dinner">Dinner</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#snacks">Snacks</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <!-- All Recipes Tab -->
+        <div class="tab-pane fade show active" id="all-recipes">
+            <div class="row g-4">
+                <!-- Breakfast Recipes -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="recipe-card h-100">
+                        <div class="recipe-image bg-warning">
+                            <i class="fas fa-bread-slice text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Overnight Oats</h5>
+                            <p class="card-text">Creamy, nutritious breakfast that's ready when you wake up.</p>
+                            <div class="recipe-meta mb-3">
+                                <span class="badge bg-warning">Breakfast</span>
+                                <span class="badge bg-success">5 min prep</span>
+                                <span class="badge bg-info">Vegan</span>
+                            </div>
+                            <div class="nutrition-info mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-fire-alt"></i> 320 kcal |
+                                    <i class="fas fa-dumbbell"></i> 12g protein |
+                                    <i class="fas fa-leaf"></i> 8g fiber
+                                </small>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="viewRecipe('overnight-oats')">View Recipe</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="recipe-card h-100">
+                        <div class="recipe-image bg-success">
+                            <i class="fas fa-seedling text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Quinoa Buddha Bowl</h5>
+                            <p class="card-text">Colorful, nutrient-packed bowl with quinoa and fresh vegetables.</p>
+                            <div class="recipe-meta mb-3">
+                                <span class="badge bg-danger">Lunch</span>
+                                <span class="badge bg-warning">30 min</span>
+                                <span class="badge bg-info">Vegetarian</span>
+                            </div>
+                            <div class="nutrition-info mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-fire-alt"></i> 480 kcal |
+                                    <i class="fas fa-dumbbell"></i> 18g protein |
+                                    <i class="fas fa-leaf"></i> 12g fiber
+                                </small>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="viewRecipe('quinoa-bowl')">View Recipe</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="recipe-card h-100">
+                        <div class="recipe-image bg-primary">
+                            <i class="fas fa-fish text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Baked Salmon with Vegetables</h5>
+                            <p class="card-text">Omega-3 rich salmon with roasted seasonal vegetables.</p>
+                            <div class="recipe-meta mb-3">
+                                <span class="badge bg-purple">Dinner</span>
+                                <span class="badge bg-warning">25 min</span>
+                                <span class="badge bg-primary">High Protein</span>
+                            </div>
+                            <div class="nutrition-info mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-fire-alt"></i> 420 kcal |
+                                    <i class="fas fa-dumbbell"></i> 35g protein |
+                                    <i class="fas fa-heart"></i> Omega-3
+                                </small>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="viewRecipe('baked-salmon')">View Recipe</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="recipe-card h-100">
+                        <div class="recipe-image bg-info">
+                            <i class="fas fa-blender text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Green Power Smoothie</h5>
+                            <p class="card-text">Energizing blend of spinach, banana, and tropical fruits.</p>
+                            <div class="recipe-meta mb-3">
+                                <span class="badge bg-secondary">Snacks</span>
+                                <span class="badge bg-success">5 min</span>
+                                <span class="badge bg-info">Vegan</span>
+                            </div>
+                            <div class="nutrition-info mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-fire-alt"></i> 180 kcal |
+                                    <i class="fas fa-dumbbell"></i> 4g protein |
+                                    <i class="fas fa-leaf"></i> 6g fiber
+                                </small>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="viewRecipe('green-smoothie')">View Recipe</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="recipe-card h-100">
+                        <div class="recipe-image bg-dark">
+                            <i class="fas fa-pepper-hot text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Mediterranean Chickpea Salad</h5>
+                            <p class="card-text">Fresh, protein-rich salad with Mediterranean flavors.</p>
+                            <div class="recipe-meta mb-3">
+                                <span class="badge bg-danger">Lunch</span>
+                                <span class="badge bg-success">15 min</span>
+                                <span class="badge bg-info">Vegan</span>
+                            </div>
+                            <div class="nutrition-info mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-fire-alt"></i> 350 kcal |
+                                    <i class="fas fa-dumbbell"></i> 15g protein |
+                                    <i class="fas fa-leaf"></i> 10g fiber
+                                </small>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="viewRecipe('chickpea-salad')">View Recipe</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="recipe-card h-100">
+                        <div class="recipe-image bg-danger">
+                            <i class="fas fa-apple-alt text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Energy Balls</h5>
+                            <p class="card-text">No-bake protein-packed snacks with dates and nuts.</p>
+                            <div class="recipe-meta mb-3">
+                                <span class="badge bg-secondary">Snacks</span>
+                                <span class="badge bg-success">10 min</span>
+                                <span class="badge bg-info">Raw</span>
+                            </div>
+                            <div class="nutrition-info mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-fire-alt"></i> 120 kcal |
+                                    <i class="fas fa-dumbbell"></i> 4g protein |
+                                    <i class="fas fa-heart"></i> Healthy fats
+                                </small>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="viewRecipe('energy-balls')">View Recipe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Individual category tabs would show filtered recipes -->
+        <div class="tab-pane fade" id="breakfast">
+            <div class="text-center">
+                <p class="text-muted">Breakfast recipes to start your day right</p>
+            </div>
+        </div>
+        
+        <div class="tab-pane fade" id="lunch">
+            <div class="text-center">
+                <p class="text-muted">Satisfying lunch options for sustained energy</p>
+            </div>
+        </div>
+        
+        <div class="tab-pane fade" id="dinner">
+            <div class="text-center">
+                <p class="text-muted">Wholesome dinner recipes for evening nourishment</p>
+            </div>
+        </div>
+        
+        <div class="tab-pane fade" id="snacks">
+            <div class="text-center">
+                <p class="text-muted">Healthy snacks for between meals</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recipe Detail Modal -->
+<div class="modal fade" id="recipeModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="recipeTitle">Recipe Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="recipeContent">
+                    <!-- Recipe details will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" onclick="addToFavorites()">
+                    <i class="fas fa-heart"></i> Add to Favorites
+                </button>
+                <button type="button" class="btn btn-primary" onclick="addToMealPlan()">
+                    <i class="fas fa-calendar-plus"></i> Add to Meal Plan
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function viewRecipe(recipeId) {
+    const recipes = {
+        'overnight-oats': {
+            title: 'Overnight Oats',
+            servings: 1,
+            prepTime: '5 minutes',
+            ingredients: [
+                '1/2 cup rolled oats',
+                '1/2 cup milk of choice',
+                '1 tbsp chia seeds',
+                '1 tbsp maple syrup',
+                '1/2 banana, sliced',
+                '1 tbsp almond butter',
+                '1/4 tsp vanilla extract',
+                'Pinch of cinnamon'
+            ],
+            instructions: [
+                'In a jar or container, combine oats, chia seeds, maple syrup, vanilla, and cinnamon.',
+                'Pour in milk and stir well to combine.',
+                'Add banana slices and a dollop of almond butter.',
+                'Refrigerate overnight or at least 4 hours.',
+                'In the morning, give it a stir and add more toppings if desired.',
+                'Enjoy cold or heat for 30 seconds in microwave.'
+            ],
+            nutrition: {
+                calories: 320,
+                protein: 12,
+                carbs: 48,
+                fiber: 8,
+                fat: 11
+            }
+        },
+        'quinoa-bowl': {
+            title: 'Quinoa Buddha Bowl',
+            servings: 2,
+            prepTime: '30 minutes',
+            ingredients: [
+                '1 cup quinoa, cooked',
+                '2 cups baby spinach',
+                '1 cup roasted sweet potato, cubed',
+                '1/2 cup chickpeas, roasted',
+                '1/2 avocado, sliced',
+                '1/4 cup red cabbage, shredded',
+                '2 tbsp tahini',
+                '1 tbsp lemon juice',
+                '1 tsp maple syrup',
+                'Salt and pepper to taste'
+            ],
+            instructions: [
+                'Cook quinoa according to package instructions.',
+                'Roast sweet potato cubes at 400°F for 20 minutes.',
+                'Roast chickpeas with olive oil and spices for 15 minutes.',
+                'Make tahini dressing by whisking tahini, lemon juice, maple syrup, and water.',
+                'Arrange quinoa, spinach, sweet potato, chickpeas, avocado, and cabbage in bowls.',
+                'Drizzle with tahini dressing and serve.'
+            ],
+            nutrition: {
+                calories: 480,
+                protein: 18,
+                carbs: 65,
+                fiber: 12,
+                fat: 18
+            }
+        },
+        'baked-salmon': {
+            title: 'Baked Salmon with Vegetables',
+            servings: 2,
+            prepTime: '25 minutes',
+            ingredients: [
+                '2 salmon fillets (6 oz each)',
+                '2 cups broccoli florets',
+                '1 bell pepper, sliced',
+                '1 zucchini, sliced',
+                '2 tbsp olive oil',
+                '1 lemon, sliced',
+                '2 cloves garlic, minced',
+                'Salt, pepper, and herbs to taste'
+            ],
+            instructions: [
+                'Preheat oven to 425°F (220°C).',
+                'Place salmon fillets on a baking sheet.',
+                'Arrange vegetables around the salmon.',
+                'Drizzle with olive oil and season with salt, pepper, and herbs.',
+                'Top salmon with lemon slices and minced garlic.',
+                'Bake for 15-18 minutes until salmon flakes easily.',
+                'Serve immediately with vegetables.'
+            ],
+            nutrition: {
+                calories: 420,
+                protein: 35,
+                carbs: 15,
+                fiber: 6,
+                fat: 25
+            }
+        }
+    };
+
+    const recipe = recipes[recipeId];
+    if (recipe) {
+        document.getElementById('recipeTitle').textContent = recipe.title;
+        
+        let content = `
+            <div class="recipe-details">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-users"></i> Servings: ${recipe.servings}</h6>
+                        <h6><i class="fas fa-clock"></i> Prep Time: ${recipe.prepTime}</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="nutrition-summary">
+                            <h6>Nutrition per serving:</h6>
+                            <ul class="list-unstyled">
+                                <li><strong>${recipe.nutrition.calories}</strong> calories</li>
+                                <li><strong>${recipe.nutrition.protein}g</strong> protein</li>
+                                <li><strong>${recipe.nutrition.fiber}g</strong> fiber</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Ingredients:</h6>
+                        <ul>
+                            ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Instructions:</h6>
+                        <ol>
+                            ${recipe.instructions.map(instruction => `<li>${instruction}</li>`).join('')}
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.getElementById('recipeContent').innerHTML = content;
+        new bootstrap.Modal(document.getElementById('recipeModal')).show();
+    }
+}
+
+function addToFavorites() {
+    // Add to favorites functionality
+    alert('Recipe added to favorites!');
+}
+
+function addToMealPlan() {
+    // Add to meal plan functionality
+    alert('Recipe added to meal plan!');
+}
+</script>
+{% endblock %}

@@ -1,0 +1,275 @@
+{% extends "base.html" %}
+
+{% block title %}Exercises - Health Toolkit{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-5">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold text-center mb-3">Exercise Library</h1>
+            <p class="lead text-center text-muted">Discover workouts tailored to your fitness level and goals</p>
+        </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <ul class="nav nav-pills justify-content-center mb-4" id="exerciseTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#all-exercises">All Exercises</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#cardio">Cardio</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#strength">Strength</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#flexibility">Flexibility</button>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <!-- All Exercises Tab -->
+        <div class="tab-pane fade show active" id="all-exercises">
+            <div class="row g-4">
+                <!-- Cardio Exercises -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="exercise-card h-100">
+                        <div class="exercise-image bg-danger">
+                            <i class="fas fa-running text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">High-Intensity Interval Training</h5>
+                            <p class="card-text">Burn calories fast with this 20-minute HIIT workout.</p>
+                            <div class="exercise-meta mb-3">
+                                <span class="badge bg-danger">Cardio</span>
+                                <span class="badge bg-secondary">20 min</span>
+                                <span class="badge bg-warning">Intermediate</span>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="startExercise('hiit')">Start Workout</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="exercise-card h-100">
+                        <div class="exercise-image bg-success">
+                            <i class="fas fa-dumbbell text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Full Body Strength</h5>
+                            <p class="card-text">Build muscle with compound movements and bodyweight exercises.</p>
+                            <div class="exercise-meta mb-3">
+                                <span class="badge bg-success">Strength</span>
+                                <span class="badge bg-secondary">30 min</span>
+                                <span class="badge bg-info">Beginner</span>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="startExercise('strength')">Start Workout</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="exercise-card h-100">
+                        <div class="exercise-image bg-info">
+                            <i class="fas fa-child text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Morning Stretch Routine</h5>
+                            <p class="card-text">Start your day right with gentle stretching and mobility work.</p>
+                            <div class="exercise-meta mb-3">
+                                <span class="badge bg-info">Flexibility</span>
+                                <span class="badge bg-secondary">15 min</span>
+                                <span class="badge bg-info">Beginner</span>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="startExercise('stretch')">Start Workout</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="exercise-card h-100">
+                        <div class="exercise-image bg-warning">
+                            <i class="fas fa-heartbeat text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Low-Impact Cardio</h5>
+                            <p class="card-text">Joint-friendly cardio workout perfect for all fitness levels.</p>
+                            <div class="exercise-meta mb-3">
+                                <span class="badge bg-danger">Cardio</span>
+                                <span class="badge bg-secondary">25 min</span>
+                                <span class="badge bg-info">Beginner</span>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="startExercise('lowimpact')">Start Workout</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="exercise-card h-100">
+                        <div class="exercise-image bg-dark">
+                            <i class="fas fa-fist-raised text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Core Strengthening</h5>
+                            <p class="card-text">Target your core muscles with focused abdominal exercises.</p>
+                            <div class="exercise-meta mb-3">
+                                <span class="badge bg-success">Strength</span>
+                                <span class="badge bg-secondary">15 min</span>
+                                <span class="badge bg-warning">Intermediate</span>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="startExercise('core')">Start Workout</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="exercise-card h-100">
+                        <div class="exercise-image bg-purple">
+                            <i class="fas fa-walking text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Evening Wind Down</h5>
+                            <p class="card-text">Relaxing movements to help you unwind after a long day.</p>
+                            <div class="exercise-meta mb-3">
+                                <span class="badge bg-info">Flexibility</span>
+                                <span class="badge bg-secondary">10 min</span>
+                                <span class="badge bg-info">Beginner</span>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="startExercise('winddown')">Start Workout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Individual category tabs would be similar with filtered content -->
+        <div class="tab-pane fade" id="cardio">
+            <div class="row g-4">
+                <!-- Cardio-specific exercises -->
+                <div class="col-12">
+                    <p class="text-center text-muted">Cardio exercises help improve heart health and burn calories.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="strength">
+            <div class="row g-4">
+                <!-- Strength-specific exercises -->
+                <div class="col-12">
+                    <p class="text-center text-muted">Strength training builds muscle and improves bone density.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="flexibility">
+            <div class="row g-4">
+                <!-- Flexibility-specific exercises -->
+                <div class="col-12">
+                    <p class="text-center text-muted">Flexibility exercises improve range of motion and prevent injury.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Exercise Modal -->
+<div class="modal fade" id="exerciseModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exerciseTitle">Exercise Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="exerciseContent">
+                    <!-- Exercise details will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Start Timer</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function startExercise(exerciseType) {
+    const exercises = {
+        hiit: {
+            title: 'High-Intensity Interval Training',
+            content: `
+                <h6>Warm-up (3 minutes)</h6>
+                <ul>
+                    <li>Arm circles - 30 seconds</li>
+                    <li>Leg swings - 30 seconds</li>
+                    <li>Light jogging in place - 2 minutes</li>
+                </ul>
+                <h6>Main Workout (15 minutes)</h6>
+                <ul>
+                    <li>Jumping jacks - 45 seconds, rest 15 seconds</li>
+                    <li>Burpees - 45 seconds, rest 15 seconds</li>
+                    <li>Mountain climbers - 45 seconds, rest 15 seconds</li>
+                    <li>High knees - 45 seconds, rest 15 seconds</li>
+                    <li>Repeat 3 times</li>
+                </ul>
+                <h6>Cool Down (2 minutes)</h6>
+                <ul>
+                    <li>Walking in place - 1 minute</li>
+                    <li>Stretching - 1 minute</li>
+                </ul>
+            `
+        },
+        strength: {
+            title: 'Full Body Strength Training',
+            content: `
+                <h6>Warm-up (5 minutes)</h6>
+                <ul>
+                    <li>Dynamic stretching - 5 minutes</li>
+                </ul>
+                <h6>Main Workout (20 minutes)</h6>
+                <ul>
+                    <li>Push-ups - 3 sets of 10-15 reps</li>
+                    <li>Squats - 3 sets of 15-20 reps</li>
+                    <li>Plank - 3 sets of 30-60 seconds</li>
+                    <li>Lunges - 3 sets of 10 per leg</li>
+                    <li>Tricep dips - 3 sets of 8-12 reps</li>
+                </ul>
+                <h6>Cool Down (5 minutes)</h6>
+                <ul>
+                    <li>Static stretching - 5 minutes</li>
+                </ul>
+            `
+        },
+        stretch: {
+            title: 'Morning Stretch Routine',
+            content: `
+                <h6>Full Body Stretching (15 minutes)</h6>
+                <ul>
+                    <li>Neck rolls - 30 seconds</li>
+                    <li>Shoulder rolls - 30 seconds</li>
+                    <li>Cat-cow stretch - 1 minute</li>
+                    <li>Child's pose - 2 minutes</li>
+                    <li>Downward dog - 1 minute</li>
+                    <li>Forward fold - 1 minute</li>
+                    <li>Hip circles - 1 minute</li>
+                    <li>Calf stretches - 1 minute each leg</li>
+                    <li>Quad stretches - 1 minute each leg</li>
+                    <li>Hamstring stretches - 2 minutes</li>
+                    <li>Spinal twist - 1 minute each side</li>
+                </ul>
+            `
+        }
+    };
+
+    const exercise = exercises[exerciseType];
+    if (exercise) {
+        document.getElementById('exerciseTitle').textContent = exercise.title;
+        document.getElementById('exerciseContent').innerHTML = exercise.content;
+        new bootstrap.Modal(document.getElementById('exerciseModal')).show();
+    }
+}
+</script>
+{% endblock %}
