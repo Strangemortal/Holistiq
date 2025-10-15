@@ -1,0 +1,538 @@
+{% extends "base.html" %}
+
+{% block title %}Health Report - Health Toolkit{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-5">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold text-center mb-3">Health Reports</h1>
+            <p class="lead text-center text-muted">Generate comprehensive health reports and track your wellness journey</p>
+        </div>
+    </div>
+
+    <!-- Report Generation Form -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-file-medical me-2"></i>Generate New Health Report</h5>
+                </div>
+                <div class="card-body">
+                    <form id="healthReportForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="fullName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="fullName" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                                    <input type="date" class="form-control" id="dateOfBirth" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="height" class="form-label">Height (cm)</label>
+                                    <input type="number" class="form-control" id="height" step="0.1" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="weight" class="form-label">Weight (kg)</label>
+                                    <input type="number" class="form-control" id="weight" step="0.1" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <select class="form-control" id="gender" required>
+                                        <option value="">Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="activityLevel" class="form-label">Activity Level</label>
+                                    <select class="form-control" id="activityLevel" required>
+                                        <option value="">Select Activity Level</option>
+                                        <option value="sedentary">Sedentary (little/no exercise)</option>
+                                        <option value="light">Lightly active (1-3 days/week)</option>
+                                        <option value="moderate">Moderately active (3-5 days/week)</option>
+                                        <option value="active">Very active (6-7 days/week)</option>
+                                        <option value="extra">Extra active (2x/day or intense exercise)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="healthGoal" class="form-label">Primary Health Goal</label>
+                                    <select class="form-control" id="healthGoal" required>
+                                        <option value="">Select Goal</option>
+                                        <option value="weight-loss">Weight Loss</option>
+                                        <option value="weight-gain">Weight Gain</option>
+                                        <option value="maintain">Maintain Current Weight</option>
+                                        <option value="fitness">Improve Fitness</option>
+                                        <option value="health">Overall Health</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Include in Report:</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="includeBMI" checked>
+                                        <label class="form-check-label" for="includeBMI">BMI Analysis</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="includeNutrition" checked>
+                                        <label class="form-check-label" for="includeNutrition">Nutrition Recommendations</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="includeExercise" checked>
+                                        <label class="form-check-label" for="includeExercise">Exercise Plan</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="includeMental" checked>
+                                        <label class="form-check-label" for="includeMental">Mental Health Tips</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="includeGoals" checked>
+                                        <label class="form-check-label" for="includeGoals">Goal Setting</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="includeProgress" checked>
+                                        <label class="form-check-label" for="includeProgress">Progress Tracking</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="reportFormat" class="form-label">Report Format</label>
+                                    <select class="form-control" id="reportFormat" required>
+                                        <option value="pdf">PDF Report</option>
+                                        <option value="json">JSON Data</option>
+                                        <option value="both">Both PDF and JSON</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary btn-lg w-100">
+                                    <i class="fas fa-file-download me-2"></i>Generate Report
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Reports -->
+    <div class="row">
+        <div class="col-12">
+            <h3 class="mb-4">Recent Reports</h3>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Date Generated</th>
+                            <th>Name</th>
+                            <th>Report Type</th>
+                            <th>BMI</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reportsTable">
+                        <tr>
+                            <td>2025-10-14</td>
+                            <td>Sample User</td>
+                            <td>Complete Health Assessment</td>
+                            <td>23.5 (Normal)</td>
+                            <td><span class="badge bg-success">Complete</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary me-1" onclick="viewReport('sample1')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary" onclick="downloadReport('sample1')">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2025-10-13</td>
+                            <td>Sample User</td>
+                            <td>BMI & Fitness Report</td>
+                            <td>23.8 (Normal)</td>
+                            <td><span class="badge bg-success">Complete</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary me-1" onclick="viewReport('sample2')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary" onclick="downloadReport('sample2')">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Report Preview Modal -->
+<div class="modal fade" id="reportModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reportModalTitle">Health Report Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="reportContent">
+                    <!-- Generated report content will appear here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="downloadCurrentReport()">
+                    <i class="fas fa-download me-2"></i>Download Report
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let currentReportData = null;
+
+document.getElementById('healthReportForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    generateHealthReport();
+});
+
+function generateHealthReport() {
+    // Collect form data
+    const formData = {
+        fullName: document.getElementById('fullName').value,
+        dateOfBirth: document.getElementById('dateOfBirth').value,
+        height: parseFloat(document.getElementById('height').value),
+        weight: parseFloat(document.getElementById('weight').value),
+        gender: document.getElementById('gender').value,
+        activityLevel: document.getElementById('activityLevel').value,
+        healthGoal: document.getElementById('healthGoal').value,
+        reportFormat: document.getElementById('reportFormat').value,
+        includes: {
+            bmi: document.getElementById('includeBMI').checked,
+            nutrition: document.getElementById('includeNutrition').checked,
+            exercise: document.getElementById('includeExercise').checked,
+            mental: document.getElementById('includeMental').checked,
+            goals: document.getElementById('includeGoals').checked,
+            progress: document.getElementById('includeProgress').checked
+        }
+    };
+
+    // Calculate BMI and generate report
+    const bmi = calculateBMI(formData.weight, formData.height);
+    const bmiCategory = getBMICategory(bmi);
+    const age = calculateAge(formData.dateOfBirth);
+    
+    const report = generateReportContent(formData, bmi, bmiCategory, age);
+    currentReportData = { ...formData, bmi, bmiCategory, age, report };
+
+    // Show report preview
+    document.getElementById('reportModalTitle').textContent = `Health Report - ${formData.fullName}`;
+    document.getElementById('reportContent').innerHTML = report;
+    new bootstrap.Modal(document.getElementById('reportModal')).show();
+
+    // Add to recent reports table
+    addToReportsTable(formData, bmi, bmiCategory);
+}
+
+function calculateBMI(weight, height) {
+    const heightInMeters = height / 100;
+    return (weight / (heightInMeters * heightInMeters)).toFixed(1);
+}
+
+function getBMICategory(bmi) {
+    if (bmi < 18.5) return 'Underweight';
+    if (bmi < 25) return 'Normal';
+    if (bmi < 30) return 'Overweight';
+    return 'Obese';
+}
+
+function calculateAge(birthDate) {
+    const today = new Date();
+    const birth = new Date(birthDate);
+    let age = today.getFullYear() - birth.getFullYear();
+    const monthDiff = today.getMonth() - birth.getMonth();
+    
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+        age--;
+    }
+    
+    return age;
+}
+
+function generateReportContent(data, bmi, bmiCategory, age) {
+    let content = `
+        <div class="health-report">
+            <div class="text-center mb-4">
+                <h2 class="text-primary">Personal Health Report</h2>
+                <p class="text-muted">Generated on ${new Date().toLocaleDateString()}</p>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h5>Personal Information</h5>
+                    <ul class="list-unstyled">
+                        <li><strong>Name:</strong> ${data.fullName}</li>
+                        <li><strong>Age:</strong> ${age} years</li>
+                        <li><strong>Gender:</strong> ${data.gender}</li>
+                        <li><strong>Height:</strong> ${data.height} cm</li>
+                        <li><strong>Weight:</strong> ${data.weight} kg</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5>Health Metrics</h5>
+                    <ul class="list-unstyled">
+                        <li><strong>BMI:</strong> ${bmi} (${bmiCategory})</li>
+                        <li><strong>Activity Level:</strong> ${data.activityLevel}</li>
+                        <li><strong>Health Goal:</strong> ${data.healthGoal}</li>
+                    </ul>
+                </div>
+            </div>
+    `;
+
+    if (data.includes.bmi) {
+        content += `
+            <div class="mb-4">
+                <h5>BMI Analysis</h5>
+                <div class="alert alert-${getBMIAlertType(bmi)}" role="alert">
+                    <h6 class="alert-heading">Your BMI: ${bmi} (${bmiCategory})</h6>
+                    <p>${getBMIAdvice(bmi)}</p>
+                </div>
+            </div>
+        `;
+    }
+
+    if (data.includes.nutrition) {
+        content += `
+            <div class="mb-4">
+                <h5>Nutrition Recommendations</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Daily Calorie Needs</h6>
+                        <p>Estimated: ${calculateCalories(data.weight, data.height, age, data.gender, data.activityLevel)} calories/day</p>
+                        <h6>Macronutrient Breakdown</h6>
+                        <ul>
+                            <li>Carbohydrates: 45-65% of calories</li>
+                            <li>Proteins: 15-25% of calories</li>
+                            <li>Fats: 20-35% of calories</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Recommended Foods</h6>
+                        <ul>
+                            <li>Lean proteins (chicken, fish, legumes)</li>
+                            <li>Whole grains (brown rice, quinoa)</li>
+                            <li>Fruits and vegetables (5-9 servings/day)</li>
+                            <li>Healthy fats (nuts, avocado, olive oil)</li>
+                            <li>Water (8-10 glasses/day)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    if (data.includes.exercise) {
+        content += `
+            <div class="mb-4">
+                <h5>Exercise Recommendations</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Cardiovascular Exercise</h6>
+                        <ul>
+                            <li>150 minutes moderate intensity per week</li>
+                            <li>Or 75 minutes vigorous intensity per week</li>
+                            <li>Activities: Walking, jogging, cycling, swimming</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Strength Training</h6>
+                        <ul>
+                            <li>2-3 sessions per week</li>
+                            <li>Target all major muscle groups</li>
+                            <li>8-12 repetitions per exercise</li>
+                            <li>Rest 1-2 days between sessions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    if (data.includes.mental) {
+        content += `
+            <div class="mb-4">
+                <h5>Mental Health & Wellness</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Stress Management</h6>
+                        <ul>
+                            <li>Practice deep breathing exercises</li>
+                            <li>Maintain regular sleep schedule</li>
+                            <li>Engage in regular physical activity</li>
+                            <li>Connect with friends and family</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Mindfulness Practices</h6>
+                        <ul>
+                            <li>Daily meditation (10-15 minutes)</li>
+                            <li>Gratitude journaling</li>
+                            <li>Yoga or tai chi</li>
+                            <li>Nature walks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    content += `</div>`;
+    
+    return content;
+}
+
+function getBMIAlertType(bmi) {
+    if (bmi < 18.5) return 'warning';
+    if (bmi < 25) return 'success';
+    if (bmi < 30) return 'warning';
+    return 'danger';
+}
+
+function getBMIAdvice(bmi) {
+    if (bmi < 18.5) return 'You are underweight. Consider consulting a healthcare provider for a personalized nutrition plan.';
+    if (bmi < 25) return 'You have a healthy weight. Maintain your current lifestyle with regular exercise and balanced nutrition.';
+    if (bmi < 30) return 'You are overweight. Consider reducing caloric intake and increasing physical activity.';
+    return 'You are in the obese category. Please consult a healthcare provider for a comprehensive weight management plan.';
+}
+
+function calculateCalories(weight, height, age, gender, activityLevel) {
+    // Using Mifflin-St Jeor Equation
+    let bmr;
+    if (gender === 'male') {
+        bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+    } else {
+        bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+    }
+
+    const activityMultipliers = {
+        sedentary: 1.2,
+        light: 1.375,
+        moderate: 1.55,
+        active: 1.725,
+        extra: 1.9
+    };
+
+    return Math.round(bmr * (activityMultipliers[activityLevel] || 1.2));
+}
+
+function addToReportsTable(data, bmi, bmiCategory) {
+    const tableBody = document.getElementById('reportsTable');
+    const newRow = tableBody.insertRow(0);
+    
+    const today = new Date().toISOString().split('T')[0];
+    const reportId = 'report_' + Date.now();
+    
+    newRow.innerHTML = `
+        <td>${today}</td>
+        <td>${data.fullName}</td>
+        <td>Complete Health Assessment</td>
+        <td>${bmi} (${bmiCategory})</td>
+        <td><span class="badge bg-success">Complete</span></td>
+        <td>
+            <button class="btn btn-sm btn-outline-primary me-1" onclick="viewReport('${reportId}')">
+                <i class="fas fa-eye"></i> View
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" onclick="downloadReport('${reportId}')">
+                <i class="fas fa-download"></i> Download
+            </button>
+        </td>
+    `;
+}
+
+function viewReport(reportId) {
+    if (currentReportData) {
+        document.getElementById('reportModalTitle').textContent = `Health Report - ${currentReportData.fullName}`;
+        document.getElementById('reportContent').innerHTML = currentReportData.report;
+        new bootstrap.Modal(document.getElementById('reportModal')).show();
+    } else {
+        alert('Report data not available. Please generate a new report.');
+    }
+}
+
+function downloadReport(reportId) {
+    if (currentReportData) {
+        if (currentReportData.reportFormat === 'json' || currentReportData.reportFormat === 'both') {
+            downloadJSON(currentReportData);
+        }
+        if (currentReportData.reportFormat === 'pdf' || currentReportData.reportFormat === 'both') {
+            downloadPDF(currentReportData);
+        }
+    } else {
+        alert('No report data available for download.');
+    }
+}
+
+function downloadCurrentReport() {
+    if (currentReportData) {
+        downloadReport('current');
+    }
+}
+
+function downloadJSON(data) {
+    const jsonData = JSON.stringify(data, null, 2);
+    const blob = new Blob([jsonData], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `health_report_${data.fullName.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+function downloadPDF(data) {
+    // For demo purposes, we'll show an alert
+    // In a real implementation, you would generate a PDF using libraries like jsPDF
+    alert('PDF download functionality would be implemented here using libraries like jsPDF.');
+}
+</script>
+{% endblock %}

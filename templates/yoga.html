@@ -1,0 +1,402 @@
+{% extends "base.html" %}
+
+{% block title %}Yoga & Meditation - Health Toolkit{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-5">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold text-center mb-3">Yoga & Meditation</h1>
+            <p class="lead text-center text-muted">Find balance, peace, and flexibility through ancient practices</p>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <ul class="nav nav-pills justify-content-center mb-4" id="yogaTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#yoga-sessions">Yoga Sessions</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#meditation">Meditation</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#breathing">Breathing Exercises</button>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <!-- Yoga Sessions Tab -->
+        <div class="tab-pane fade show active" id="yoga-sessions">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="yoga-card h-100">
+                        <div class="yoga-image bg-success">
+                            <i class="fas fa-leaf text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Beginner Hatha Yoga</h5>
+                            <p class="card-text">Gentle introduction to yoga with basic poses and breathing techniques.</p>
+                            <div class="yoga-meta mb-3">
+                                <span class="badge bg-success">Beginner</span>
+                                <span class="badge bg-secondary">30 min</span>
+                            </div>
+                            <button class="btn btn-success w-100" onclick="startYogaSession('hatha')">Start Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="yoga-card h-100">
+                        <div class="yoga-image bg-info">
+                            <i class="fas fa-sun text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Sun Salutation</h5>
+                            <p class="card-text">Energizing sequence to start your day with vitality and focus.</p>
+                            <div class="yoga-meta mb-3">
+                                <span class="badge bg-warning">Intermediate</span>
+                                <span class="badge bg-secondary">20 min</span>
+                            </div>
+                            <button class="btn btn-success w-100" onclick="startYogaSession('sun-salutation')">Start Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="yoga-card h-100">
+                        <div class="yoga-image bg-purple">
+                            <i class="fas fa-moon text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Evening Restorative</h5>
+                            <p class="card-text">Calming poses to help you unwind and prepare for restful sleep.</p>
+                            <div class="yoga-meta mb-3">
+                                <span class="badge bg-success">Beginner</span>
+                                <span class="badge bg-secondary">25 min</span>
+                            </div>
+                            <button class="btn btn-success w-100" onclick="startYogaSession('restorative')">Start Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="yoga-card h-100">
+                        <div class="yoga-image bg-danger">
+                            <i class="fas fa-fire text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Power Vinyasa</h5>
+                            <p class="card-text">Dynamic flow combining strength, flexibility, and mindfulness.</p>
+                            <div class="yoga-meta mb-3">
+                                <span class="badge bg-danger">Advanced</span>
+                                <span class="badge bg-secondary">45 min</span>
+                            </div>
+                            <button class="btn btn-success w-100" onclick="startYogaSession('vinyasa')">Start Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="yoga-card h-100">
+                        <div class="yoga-image bg-primary">
+                            <i class="fas fa-heart text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Heart Opening Flow</h5>
+                            <p class="card-text">Focus on backbends and chest opening poses to improve posture.</p>
+                            <div class="yoga-meta mb-3">
+                                <span class="badge bg-warning">Intermediate</span>
+                                <span class="badge bg-secondary">35 min</span>
+                            </div>
+                            <button class="btn btn-success w-100" onclick="startYogaSession('heart-opening')">Start Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="yoga-card h-100">
+                        <div class="yoga-image bg-warning">
+                            <i class="fas fa-balance-scale text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Balance & Stability</h5>
+                            <p class="card-text">Improve core strength and balance with standing poses.</p>
+                            <div class="yoga-meta mb-3">
+                                <span class="badge bg-warning">Intermediate</span>
+                                <span class="badge bg-secondary">30 min</span>
+                            </div>
+                            <button class="btn btn-success w-100" onclick="startYogaSession('balance')">Start Session</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meditation Tab -->
+        <div class="tab-pane fade" id="meditation">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="meditation-card h-100">
+                        <div class="meditation-image bg-indigo">
+                            <i class="fas fa-brain text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Mindfulness Meditation</h5>
+                            <p class="card-text">Practice present-moment awareness and mental clarity.</p>
+                            <div class="meditation-meta mb-3">
+                                <span class="badge bg-info">5 min</span>
+                                <span class="badge bg-success">Beginner</span>
+                            </div>
+                            <button class="btn btn-info w-100" onclick="startMeditation('mindfulness', 5)">Start Meditation</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="meditation-card h-100">
+                        <div class="meditation-image bg-success">
+                            <i class="fas fa-seedling text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Body Scan</h5>
+                            <p class="card-text">Progressive relaxation technique for deep stress relief.</p>
+                            <div class="meditation-meta mb-3">
+                                <span class="badge bg-info">15 min</span>
+                                <span class="badge bg-success">Beginner</span>
+                            </div>
+                            <button class="btn btn-info w-100" onclick="startMeditation('body-scan', 15)">Start Meditation</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="meditation-card h-100">
+                        <div class="meditation-image bg-purple">
+                            <i class="fas fa-heart text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Loving Kindness</h5>
+                            <p class="card-text">Cultivate compassion and positive emotions toward yourself and others.</p>
+                            <div class="meditation-meta mb-3">
+                                <span class="badge bg-info">10 min</span>
+                                <span class="badge bg-success">Beginner</span>
+                            </div>
+                            <button class="btn btn-info w-100" onclick="startMeditation('loving-kindness', 10)">Start Meditation</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Breathing Exercises Tab -->
+        <div class="tab-pane fade" id="breathing">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="breathing-card h-100">
+                        <div class="breathing-image bg-primary">
+                            <i class="fas fa-wind text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">4-7-8 Breathing</h5>
+                            <p class="card-text">Calming technique to reduce anxiety and promote sleep.</p>
+                            <div class="breathing-meta mb-3">
+                                <span class="badge bg-primary">5 min</span>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="startBreathing('4-7-8')">Start Practice</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="breathing-card h-100">
+                        <div class="breathing-image bg-warning">
+                            <i class="fas fa-circle-notch text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Box Breathing</h5>
+                            <p class="card-text">Square breathing pattern for focus and stress reduction.</p>
+                            <div class="breathing-meta mb-3">
+                                <span class="badge bg-warning">10 min</span>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="startBreathing('box')">Start Practice</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="breathing-card h-100">
+                        <div class="breathing-image bg-success">
+                            <i class="fas fa-lungs text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Deep Belly Breathing</h5>
+                            <p class="card-text">Fundamental breathing technique for relaxation and centering.</p>
+                            <div class="breathing-meta mb-3">
+                                <span class="badge bg-success">8 min</span>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="startBreathing('belly')">Start Practice</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Session Modal -->
+<div class="modal fade" id="sessionModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="sessionTitle">Session Guide</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="sessionContent"></div>
+                <div id="timerDisplay" class="text-center mt-4" style="display: none;">
+                    <div class="timer-circle">
+                        <h2 id="timerText" class="text-primary">00:00</h2>
+                    </div>
+                    <div class="mt-3">
+                        <button id="playPauseBtn" class="btn btn-success me-2">
+                            <i class="fas fa-play"></i> Start
+                        </button>
+                        <button id="resetBtn" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let timer;
+let totalSeconds = 0;
+let currentSeconds = 0;
+let isRunning = false;
+
+function startYogaSession(sessionType) {
+    const sessions = {
+        'hatha': {
+            title: 'Beginner Hatha Yoga',
+            content: `
+                <h6>Prepare for Practice (5 minutes)</h6>
+                <ul>
+                    <li>Find a quiet, comfortable space</li>
+                    <li>Lay out your yoga mat</li>
+                    <li>Sit in a comfortable cross-legged position</li>
+                    <li>Take 5 deep breaths to center yourself</li>
+                </ul>
+                <h6>Warm-Up Sequence (10 minutes)</h6>
+                <ul>
+                    <li>Neck rolls - 30 seconds each direction</li>
+                    <li>Shoulder rolls - 1 minute</li>
+                    <li>Cat-Cow pose - 2 minutes</li>
+                    <li>Child's pose - 2 minutes</li>
+                    <li>Gentle spinal twists - 2 minutes</li>
+                    <li>Hip circles - 1 minute</li>
+                </ul>
+                <h6>Main Practice (15 minutes)</h6>
+                <ul>
+                    <li>Mountain pose - 1 minute</li>
+                    <li>Forward fold - 2 minutes</li>
+                    <li>Warrior I - 2 minutes each side</li>
+                    <li>Tree pose - 1 minute each side</li>
+                    <li>Downward facing dog - 2 minutes</li>
+                    <li>Bridge pose - 2 minutes</li>
+                    <li>Seated forward fold - 2 minutes</li>
+                </ul>
+            `
+        }
+    };
+
+    const session = sessions[sessionType];
+    if (session) {
+        document.getElementById('sessionTitle').textContent = session.title;
+        document.getElementById('sessionContent').innerHTML = session.content;
+        document.getElementById('timerDisplay').style.display = 'none';
+        new bootstrap.Modal(document.getElementById('sessionModal')).show();
+    }
+}
+
+function startMeditation(type, minutes) {
+    const meditations = {
+        'mindfulness': 'Focus on your breath. When thoughts arise, gently acknowledge them and return attention to your breathing.',
+        'body-scan': 'Starting from your toes, slowly move your attention through each part of your body, noticing any sensations without judgment.',
+        'loving-kindness': 'Begin by sending loving thoughts to yourself, then extend them to loved ones, neutral people, difficult people, and all beings.'
+    };
+
+    document.getElementById('sessionTitle').textContent = type.charAt(0).toUpperCase() + type.slice(1) + ' Meditation';
+    document.getElementById('sessionContent').innerHTML = `<p class="lead">${meditations[type]}</p>`;
+    
+    setupTimer(minutes * 60);
+    new bootstrap.Modal(document.getElementById('sessionModal')).show();
+}
+
+function startBreathing(technique) {
+    const techniques = {
+        '4-7-8': 'Inhale for 4 counts, hold for 7 counts, exhale for 8 counts. Repeat this cycle.',
+        'box': 'Inhale for 4 counts, hold for 4 counts, exhale for 4 counts, hold for 4 counts.',
+        'belly': 'Place one hand on chest, one on belly. Breathe slowly and deeply, making the bottom hand rise more than the top.'
+    };
+
+    document.getElementById('sessionTitle').textContent = technique + ' Breathing';
+    document.getElementById('sessionContent').innerHTML = `<p class="lead">${techniques[technique]}</p>`;
+    
+    setupTimer(300); // 5 minutes default
+    new bootstrap.Modal(document.getElementById('sessionModal')).show();
+}
+
+function setupTimer(seconds) {
+    totalSeconds = seconds;
+    currentSeconds = seconds;
+    updateTimerDisplay();
+    document.getElementById('timerDisplay').style.display = 'block';
+    
+    document.getElementById('playPauseBtn').onclick = toggleTimer;
+    document.getElementById('resetBtn').onclick = resetTimer;
+}
+
+function toggleTimer() {
+    if (isRunning) {
+        clearInterval(timer);
+        document.getElementById('playPauseBtn').innerHTML = '<i class="fas fa-play"></i> Resume';
+        isRunning = false;
+    } else {
+        timer = setInterval(() => {
+            currentSeconds--;
+            updateTimerDisplay();
+            
+            if (currentSeconds <= 0) {
+                clearInterval(timer);
+                document.getElementById('playPauseBtn').innerHTML = '<i class="fas fa-play"></i> Start';
+                isRunning = false;
+                alert('Session complete! Great job!');
+            }
+        }, 1000);
+        
+        document.getElementById('playPauseBtn').innerHTML = '<i class="fas fa-pause"></i> Pause';
+        isRunning = true;
+    }
+}
+
+function resetTimer() {
+    clearInterval(timer);
+    currentSeconds = totalSeconds;
+    updateTimerDisplay();
+    document.getElementById('playPauseBtn').innerHTML = '<i class="fas fa-play"></i> Start';
+    isRunning = false;
+}
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(currentSeconds / 60);
+    const seconds = currentSeconds % 60;
+    document.getElementById('timerText').textContent = 
+        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+</script>
+{% endblock %}

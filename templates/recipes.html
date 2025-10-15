@@ -1,0 +1,309 @@
+{% block scripts %}
+<script>
+function viewRecipe(recipeId) {
+    const recipes = {
+        'Vegetable Oats Upma': {
+            title: 'Vegetable Oats Upma',
+            servings: 1,
+            prepTime: '10 minutes',
+            ingredients: [
+                '1/2 cup rolled oats',
+                '1 cup mixed vegetables (carrot, peas, beans)',
+                '1/2 onion, chopped',
+                '1 green chili, chopped',
+                '1 tsp mustard seeds',
+                '1 tsp oil',
+                'Salt to taste',
+                'Coriander leaves for garnish'
+            ],
+            instructions: [
+                'Heat oil in a pan, add mustard seeds and let them splutter.',
+                'Add onions and green chili, sauté until translucent.',
+                'Add mixed vegetables and cook for 2-3 minutes.',
+                'Add oats and sauté for another minute.',
+                'Add 1 cup water and salt, cook until oats are soft.',
+                'Garnish with coriander leaves and serve hot.'
+            ],
+            nutrition: {
+                calories: 320,
+                protein: 11,
+                carbs: 45,
+                fiber: 8,
+                fat: 7
+            }
+        },
+        'Brown Rice Khichdi': {
+            title: 'Brown Rice Khichdi',
+            servings: 2,
+            prepTime: '30 minutes',
+            ingredients: [
+                '1/2 cup brown rice',
+                '1/4 cup split moong dal',
+                '1 cup mixed vegetables (carrot, peas, beans)',
+                '1/2 tsp cumin seeds',
+                '1/2 tsp turmeric powder',
+                '1 tsp ghee or oil',
+                'Salt to taste',
+                '2 cups water'
+            ],
+            instructions: [
+                'Wash rice and dal, soak for 15 minutes.',
+                'Heat ghee in a pressure cooker, add cumin seeds.',
+                'Add vegetables and sauté for 2 minutes.',
+                'Add rice, dal, turmeric, salt, and water.',
+                'Pressure cook for 3 whistles.',
+                'Serve hot with yogurt or pickle.'
+            ],
+            nutrition: {
+                calories: 480,
+                protein: 18,
+                carbs: 65,
+                fiber: 12,
+                fat: 8
+            }
+        },
+        'Grilled Paneer & Veggies Bowl': {
+            title: 'Grilled Paneer & Veggies Bowl',
+            servings: 2,
+            prepTime: '25 minutes',
+            ingredients: [
+                '200g paneer, cubed',
+                '1 cup bell peppers, chopped',
+                '1 cup zucchini, sliced',
+                '1 cup broccoli florets',
+                '1 tbsp olive oil',
+                '1 tsp mixed herbs',
+                'Salt and pepper to taste'
+            ],
+            instructions: [
+                'Marinate paneer and vegetables with olive oil, herbs, salt, and pepper.',
+                'Grill on a pan or oven for 10-12 minutes until golden.',
+                'Serve in a bowl with a squeeze of lemon.'
+            ],
+            nutrition: {
+                calories: 420,
+                protein: 35,
+                carbs: 20,
+                fiber: 6,
+                fat: 25
+            }
+        },
+        'Banana Peanut Smoothie': {
+            title: 'Banana Peanut Smoothie',
+            servings: 2,
+            prepTime: '5 minutes',
+            ingredients: [
+                '2 bananas',
+                '2 tbsp peanut butter',
+                '1 cup almond milk',
+                '1 tbsp chia seeds',
+                '1 tsp honey (optional)'
+            ],
+            instructions: [
+                'Add bananas, peanut butter, almond milk, chia seeds, and honey to a blender.',
+                'Blend until smooth.',
+                'Pour into glasses and serve chilled.'
+            ],
+            nutrition: {
+                calories: 180,
+                protein: 4,
+                carbs: 30,
+                fiber: 6,
+                fat: 7
+            }
+        },
+        'Millet Vegetable Pulao': {
+            title: 'Millet Vegetable Pulao',
+            servings: 2,
+            prepTime: '20 minutes',
+            ingredients: [
+                '1 cup millet (foxtail or little millet)',
+                '1 cup mixed vegetables (carrot, peas, beans)',
+                '1 onion, sliced',
+                '1 tsp cumin seeds',
+                '1 tsp oil',
+                'Salt to taste',
+                '2 cups water'
+            ],
+            instructions: [
+                'Wash millet and soak for 10 minutes.',
+                'Heat oil in a pan, add cumin seeds and onions.',
+                'Add vegetables and sauté for 2 minutes.',
+                'Add millet, salt, and water. Cook covered until millet is soft.',
+                'Fluff with fork and serve hot.'
+            ],
+            nutrition: {
+                calories: 350,
+                protein: 15,
+                carbs: 60,
+                fiber: 10,
+                fat: 6
+            }
+        },
+        'Energy Balls': {
+            title: 'Energy Balls',
+            servings: 8,
+            prepTime: '10 minutes',
+            ingredients: [
+                '1 cup dates, pitted',
+                '1/2 cup almonds',
+                '1/2 cup walnuts',
+                '2 tbsp cocoa powder',
+                '1 tbsp chia seeds',
+                '1 tbsp coconut flakes'
+            ],
+            instructions: [
+                'Blend dates, almonds, walnuts, cocoa, and chia seeds in a food processor.',
+                'Roll mixture into small balls.',
+                'Coat with coconut flakes.',
+                'Refrigerate for 30 minutes before serving.'
+            ],
+            nutrition: {
+                calories: 120,
+                protein: 4,
+                carbs: 18,
+                fiber: 3,
+                fat: 7
+            }
+        },
+        // --- Three new recipes below ---
+        'Quinoa Salad': {
+            title: 'Quinoa Salad',
+            servings: 2,
+            prepTime: '15 minutes',
+            ingredients: [
+                '1 cup cooked quinoa',
+                '1/2 cup cherry tomatoes, halved',
+                '1/2 cucumber, diced',
+                '1/4 cup feta cheese, crumbled',
+                '2 tbsp olive oil',
+                '1 tbsp lemon juice',
+                'Salt and pepper to taste'
+            ],
+            instructions: [
+                'Combine quinoa, tomatoes, cucumber, and feta in a bowl.',
+                'Drizzle with olive oil and lemon juice.',
+                'Season with salt and pepper, toss well.',
+                'Serve chilled.'
+            ],
+            nutrition: {
+                calories: 250,
+                protein: 9,
+                carbs: 35,
+                fiber: 5,
+                fat: 10
+            }
+        },
+        'Sweet Potato Fries': {
+            title: 'Sweet Potato Fries',
+            servings: 2,
+            prepTime: '25 minutes',
+            ingredients: [
+                '2 medium sweet potatoes',
+                '1 tbsp olive oil',
+                '1/2 tsp paprika',
+                '1/2 tsp garlic powder',
+                'Salt and pepper to taste'
+            ],
+            instructions: [
+                'Preheat oven to 220°C (425°F).',
+                'Cut sweet potatoes into fries.',
+                'Toss with olive oil, paprika, garlic powder, salt, and pepper.',
+                'Spread on a baking sheet and bake for 20 minutes, flipping halfway.',
+                'Serve hot.'
+            ],
+            nutrition: {
+                calories: 180,
+                protein: 2,
+                carbs: 38,
+                fiber: 5,
+                fat: 5
+            }
+        },
+        'Spinach Lentil Soup': {
+            title: 'Spinach Lentil Soup',
+            servings: 3,
+            prepTime: '30 minutes',
+            ingredients: [
+                '1 cup red lentils',
+                '2 cups spinach, chopped',
+                '1 onion, chopped',
+                '2 cloves garlic, minced',
+                '1 tsp cumin powder',
+                '1 tbsp olive oil',
+                '4 cups vegetable broth',
+                'Salt and pepper to taste'
+            ],
+            instructions: [
+                'Heat olive oil in a pot, sauté onion and garlic.',
+                'Add lentils, cumin, and broth. Bring to boil.',
+                'Simmer for 20 minutes until lentils are soft.',
+                'Add spinach, cook for 5 more minutes.',
+                'Season with salt and pepper, serve warm.'
+            ],
+            nutrition: {
+                calories: 220,
+                protein: 12,
+                carbs: 35,
+                fiber: 8,
+                fat: 4
+            }
+        }
+    };
+
+    const recipe = recipes[recipeId];
+    if (recipe) {
+        document.getElementById('recipeTitle').textContent = recipe.title;
+        
+        let content = `
+            <div class="recipe-details">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-users"></i> Servings: ${recipe.servings}</h6>
+                        <h6><i class="fas fa-clock"></i> Prep Time: ${recipe.prepTime}</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="nutrition-summary">
+                            <h6>Nutrition per serving:</h6>
+                            <ul class="list-unstyled">
+                                <li><strong>${recipe.nutrition.calories}</strong> calories</li>
+                                <li><strong>${recipe.nutrition.protein}g</strong> protein</li>
+                                <li><strong>${recipe.nutrition.fiber}g</strong> fiber</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Ingredients:</h6>
+                        <ul>
+                            ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Instructions:</h6>
+                        <ol>
+                            ${recipe.instructions.map(instruction => `<li>${instruction}</li>`).join('')}
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.getElementById('recipeContent').innerHTML = content;
+        new bootstrap.Modal(document.getElementById('recipeModal')).show();
+    }
+}
+
+function addToFavorites() {
+    // Add to favorites functionality
+    alert('Recipe added to favorites!');
+}
+
+function addToMealPlan() {
+    // Add to meal plan functionality
+    alert('Recipe added to meal plan!');
+}
+</script>
+{% endblock %}
