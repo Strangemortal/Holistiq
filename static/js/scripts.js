@@ -66,22 +66,31 @@ function sendMessage() {
     const message = chatInput.value.trim();
     
     if (message === '') return;
+
+    // Get user details from the form
+    const age = document.getElementById('userAge').value;
+    const weight = document.getElementById('userWeight').value;
+    const height = document.getElementById('userHeight').value;
+    const activityLevel = document.getElementById('userActivityLevel').value;
+    const healthGoals = document.getElementById('userHealthGoals').value;
+
+    // Validate required fields
+    if (!weight || !height) {
+        alert('Please provide at least your weight and height for personalized advice.');
+        return;
+    }
     
     addChatMessage('user', message);
     chatInput.value = '';
     showTypingIndicator();
 
-    // --- NEW: Get health data from the dashboard ---
-    const weightEl = document.getElementById('user-weight');
-    const bmiEl = document.getElementById('user-bmi');
-    const mentalScoreEl = document.getElementById('mental-score');
-
     const healthData = {
         message: message,
-        weight: weightEl ? parseFloat(weightEl.textContent) : null,
-        bmi: bmiEl ? parseFloat(bmiEl.textContent) : null,
-        mentalHealthScore: mentalScoreEl ? parseInt(mentalScoreEl.textContent) : null,
-        session_id: "some-unique-session-id" // You can implement session management here
+        age: parseInt(age) || null,
+        weight: parseFloat(weight) || null,
+        height: parseFloat(height) || null,
+        activityLevel: activityLevel || null,
+        healthGoals: healthGoals || null
     };
 
     // --- NEW: Call the backend API ---

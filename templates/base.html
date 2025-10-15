@@ -101,11 +101,37 @@
 						></button>
 					</div>
 					<div class="modal-body">
+						<div id="userDetailsForm" class="mb-3">
+							<h6>Please enter your details:</h6>
+							<div class="row g-3">
+								<div class="col-md-6">
+									<input type="number" class="form-control" id="userAge" placeholder="Age" min="1" max="120">
+								</div>
+								<div class="col-md-6">
+									<input type="number" class="form-control" id="userWeight" placeholder="Weight (kg)" step="0.1" min="20" max="300">
+								</div>
+								<div class="col-md-6">
+									<input type="number" class="form-control" id="userHeight" placeholder="Height (cm)" step="1" min="50" max="250">
+								</div>
+								<div class="col-md-6">
+									<select class="form-control" id="userActivityLevel">
+										<option value="">Activity Level</option>
+										<option value="sedentary">Sedentary</option>
+										<option value="light">Lightly Active</option>
+										<option value="moderate">Moderately Active</option>
+										<option value="very">Very Active</option>
+									</select>
+								</div>
+								<div class="col-12">
+									<textarea class="form-control" id="userHealthGoals" placeholder="Your health goals..." rows="2"></textarea>
+								</div>
+							</div>
+						</div>
 						<div
 							id="chatBox"
 							class="chat-box mb-3"
 							style="
-								height: 400px;
+								height: 300px;
 								overflow-y: auto;
 								border: 1px solid #dee2e6;
 								padding: 15px;
@@ -113,10 +139,11 @@
 							"
 						>
 							<div class="chat-message bot-message">
-								<strong>Health Assistant:</strong> Hello! I'm
-								here to help you with health-related questions.
-								How can I assist you today?
+								<strong>Health Assistant:</strong> Hello! Please fill in your details above so I can provide personalized health advice. How can I assist you today?
 							</div>
+						</div>
+						<div class="input-group mb-2">
+							<small class="text-muted w-100">Tip: For best results, provide your details above and ask specific questions about your health goals.</small>
 						</div>
 						<div class="input-group">
 							<input
