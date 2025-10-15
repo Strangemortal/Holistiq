@@ -1,43 +1,114 @@
-{% block scripts %}
-<script>
-function viewRecipe(recipeId) {
-    const recipes = {
-        'Vegetable Oats Upma': {
-            title: 'Vegetable Oats Upma',
-            servings: 1,
-            prepTime: '10 minutes',
-            ingredients: [
-                '1/2 cup rolled oats',
-                '1 cup mixed vegetables (carrot, peas, beans)',
-                '1/2 onion, chopped',
-                '1 green chili, chopped',
-                '1 tsp mustard seeds',
-                '1 tsp oil',
-                'Salt to taste',
-                'Coriander leaves for garnish'
-            ],
-            instructions: [
-                'Heat oil in a pan, add mustard seeds and let them splutter.',
-                'Add onions and green chili, sauté until translucent.',
-                'Add mixed vegetables and cook for 2-3 minutes.',
-                'Add oats and sauté for another minute.',
-                'Add 1 cup water and salt, cook until oats are soft.',
-                'Garnish with coriander leaves and serve hot.'
-            ],
-            nutrition: {
-                calories: 320,
-                protein: 11,
-                carbs: 45,
-                fiber: 8,
-                fat: 7
-            }
-        },
-        'Brown Rice Khichdi': {
-            title: 'Brown Rice Khichdi',
-            servings: 2,
-            prepTime: '30 minutes',
-            ingredients: [
-                '1/2 cup brown rice',
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthy Recipes</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="mb-4 text-center">Healthy Recipes</h1>
+        <div class="row" id="recipeCards">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Vegetable Oats Upma</h5>
+                        <button class="btn btn-primary w-100" onclick="viewRecipe('Vegetable Oats Upma')">View Recipe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Brown Rice Khichdi</h5>
+                        <button class="btn btn-primary w-100" onclick="viewRecipe('Brown Rice Khichdi')">View Recipe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Grilled Paneer & Veggies Bowl</h5>
+                        <button class="btn btn-primary w-100" onclick="viewRecipe('Grilled Paneer & Veggies Bowl')">View Recipe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Banana Peanut Smoothie</h5>
+                        <button class="btn btn-primary w-100" onclick="viewRecipe('Banana Peanut Smoothie')">View Recipe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Millet Vegetable Pulao</h5>
+                        <button class="btn btn-primary w-100" onclick="viewRecipe('Millet Vegetable Pulao')">View Recipe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Energy Balls</h5>
+                        <button class="btn btn-primary w-100" onclick="viewRecipe('Energy Balls')">View Recipe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Quinoa Salad</h5>
+                        <button class="btn btn-primary w-100" onclick="viewRecipe('Quinoa Salad')">View Recipe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Sweet Potato Fries</h5>
+                        <button class="btn btn-primary w-100" onclick="viewRecipe('Sweet Potato Fries')">View Recipe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Spinach Lentil Soup</h5>
+                        <button class="btn btn-primary w-100" onclick="viewRecipe('Spinach Lentil Soup')">View Recipe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="recipeTitle">Recipe Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="recipeContent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // ...existing JS code...
+    function viewRecipe(recipeId) {
+        const recipes = {
+            'Vegetable Oats Upma': {
+                title: 'Vegetable Oats Upma',
+                servings: 1,
+                prepTime: '10 minutes',
+                ingredients: [
+                    '1/2 cup rolled oats',
                 '1/4 cup split moong dal',
                 '1 cup mixed vegetables (carrot, peas, beans)',
                 '1/2 tsp cumin seeds',
@@ -214,7 +285,8 @@ function viewRecipe(recipeId) {
             ],
             nutrition: {
                 calories: 180,
-                protein: 2,
+<!-- Recipes Page -->
+<!-- End Recipes Page -->
                 carbs: 38,
                 fiber: 5,
                 fat: 5
@@ -306,4 +378,3 @@ function addToMealPlan() {
     alert('Recipe added to meal plan!');
 }
 </script>
-{% endblock %}
