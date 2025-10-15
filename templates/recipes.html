@@ -1,403 +1,346 @@
 {% extends "base.html" %}
-
-{% block title %}Healthy Recipes - Health Toolkit{% endblock %}
+{% block title %}Healthy Recipes{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <div class="row mb-5">
-        <div class="col-12">
-            <h1 class="display-5 fw-bold text-center mb-3">Healthy Recipes</h1>
-            <p class="lead text-center text-muted">Nourish your body with delicious and nutritious meals</p>
-        </div>
-    </div>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Healthy Recipes 🍽️</h1>
 
-    <!-- Filter Options -->
-    <div class="row mb-4">
-        <div class="col-md-8 mx-auto">
-            <div class="filter-bar">
-                <ul class="nav nav-pills justify-content-center mb-3" id="recipeTabs" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#all-recipes">All Recipes</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#breakfast">Breakfast</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#lunch">Lunch</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#dinner">Dinner</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#snacks">Snacks</button>
-                    </li>
-                </ul>
+    <!-- Tabs for meal categories -->
+    <ul class="nav nav-pills justify-content-center mb-4" id="recipeTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="breakfast-tab" data-bs-toggle="pill" data-bs-target="#breakfast" type="button" role="tab">Breakfast</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="lunch-tab" data-bs-toggle="pill" data-bs-target="#lunch" type="button" role="tab">Lunch</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="dinner-tab" data-bs-toggle="pill" data-bs-target="#dinner" type="button" role="tab">Dinner</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="snacks-tab" data-bs-toggle="pill" data-bs-target="#snacks" type="button" role="tab">Snacks</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="recipeTabsContent">
+
+        <!-- Breakfast Tab -->
+        <div class="tab-pane fade show active" id="breakfast" role="tabpanel">
+            <div class="row g-4">
+                <!-- Original Recipe Cards -->
+                <div class="col-md-4">
+                    <div class="card recipe-card h-100" data-recipe-id="1" onclick="showRecipeDetails(1)">
+                        <img src="https://www.allrecipes.com/thmb/mJJPeaKKj61DZ4kc_jHHVI3kmG8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/AvocadoToastwithEggFranceC4x3-bb87e3bbf1944657b7db35f1383fabdb.jpg" class="card-img-top" alt="Avocado Toast">
+                        <div class="card-body">
+                            <h5 class="card-title">Avocado Toast</h5>
+                            <span class="badge bg-success">200 kcal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Breakfast Recipes -->
+                <div class="col-md-4">
+                    <div class="card recipe-card h-100" data-recipe-id="5" onclick="showRecipeDetails(5)">
+                        <img src="https://images.unsplash.com/photo-1617196032984-3ddf2c1ef7d3" class="card-img-top" alt="Vegetable Oats Upma">
+                        <div class="card-body">
+                            <h5 class="card-title">Vegetable Oats Upma</h5>
+                            <span class="badge bg-success">250 kcal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card recipe-card h-100" data-recipe-id="6" onclick="showRecipeDetails(6)">
+                        <img src="https://images.unsplash.com/photo-1590080875831-bb2f1b58d8b0" class="card-img-top" alt="Banana Peanut Smoothie">
+                        <div class="card-body">
+                            <h5 class="card-title">Banana Peanut Smoothie</h5>
+                            <span class="badge bg-success">300 kcal</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="tab-content">
-        <!-- All Recipes Tab -->
-        <div class="tab-pane fade show active" id="all-recipes">
+        <!-- Lunch Tab -->
+        <div class="tab-pane fade" id="lunch" role="tabpanel">
             <div class="row g-4">
-                <!-- Breakfast Recipes -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="recipe-card h-100">
-                        <div class="recipe-image bg-warning">
-                            <i class="fas fa-bread-slice text-white"></i>
-                        </div>
+                <!-- Original -->
+                <div class="col-md-4">
+                    <div class="card recipe-card h-100" data-recipe-id="2" onclick="showRecipeDetails(2)">
+                        <img src="https://www.dinneratthezoo.com/wp-content/uploads/2020/12/grilled-chicken-salad-4.jpg" class="card-img-top" alt="Grilled Chicken Salad">
                         <div class="card-body">
-                            <h5 class="card-title">Overnight Oats</h5>
-                            <p class="card-text">Creamy, nutritious breakfast that's ready when you wake up.</p>
-                            <div class="recipe-meta mb-3">
-                                <span class="badge bg-warning">Breakfast</span>
-                                <span class="badge bg-success">5 min prep</span>
-                                <span class="badge bg-info">Vegan</span>
-                            </div>
-                            <div class="nutrition-info mb-3">
-                                <small class="text-muted">
-                                    <i class="fas fa-fire-alt"></i> 320 kcal |
-                                    <i class="fas fa-dumbbell"></i> 12g protein |
-                                    <i class="fas fa-leaf"></i> 8g fiber
-                                </small>
-                            </div>
-                            <button class="btn btn-primary w-100" onclick="viewRecipe('overnight-oats')">View Recipe</button>
+                            <h5 class="card-title">Grilled Chicken Salad</h5>
+                            <span class="badge bg-success">350 kcal</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="recipe-card h-100">
-                        <div class="recipe-image bg-success">
-                            <i class="fas fa-seedling text-white"></i>
-                        </div>
+                <!-- New Lunch Recipes -->
+                <div class="col-md-4">
+                    <div class="card recipe-card h-100" data-recipe-id="7" onclick="showRecipeDetails(7)">
+                        <img src="https://images.unsplash.com/photo-1633980672867-bbbf4a88c205" class="card-img-top" alt="Brown Rice Khichdi">
                         <div class="card-body">
-                            <h5 class="card-title">Quinoa Buddha Bowl</h5>
-                            <p class="card-text">Colorful, nutrient-packed bowl with quinoa and fresh vegetables.</p>
-                            <div class="recipe-meta mb-3">
-                                <span class="badge bg-danger">Lunch</span>
-                                <span class="badge bg-warning">30 min</span>
-                                <span class="badge bg-info">Vegetarian</span>
-                            </div>
-                            <div class="nutrition-info mb-3">
-                                <small class="text-muted">
-                                    <i class="fas fa-fire-alt"></i> 480 kcal |
-                                    <i class="fas fa-dumbbell"></i> 18g protein |
-                                    <i class="fas fa-leaf"></i> 12g fiber
-                                </small>
-                            </div>
-                            <button class="btn btn-primary w-100" onclick="viewRecipe('quinoa-bowl')">View Recipe</button>
+                            <h5 class="card-title">Brown Rice Khichdi</h5>
+                            <span class="badge bg-success">300 kcal</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="recipe-card h-100">
-                        <div class="recipe-image bg-primary">
-                            <i class="fas fa-fish text-white"></i>
-                        </div>
+                <div class="col-md-4">
+                    <div class="card recipe-card h-100" data-recipe-id="8" onclick="showRecipeDetails(8)">
+                        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0" class="card-img-top" alt="Grilled Paneer & Veggies Bowl">
                         <div class="card-body">
-                            <h5 class="card-title">Baked Salmon with Vegetables</h5>
-                            <p class="card-text">Omega-3 rich salmon with roasted seasonal vegetables.</p>
-                            <div class="recipe-meta mb-3">
-                                <span class="badge bg-purple">Dinner</span>
-                                <span class="badge bg-warning">25 min</span>
-                                <span class="badge bg-primary">High Protein</span>
-                            </div>
-                            <div class="nutrition-info mb-3">
-                                <small class="text-muted">
-                                    <i class="fas fa-fire-alt"></i> 420 kcal |
-                                    <i class="fas fa-dumbbell"></i> 35g protein |
-                                    <i class="fas fa-heart"></i> Omega-3
-                                </small>
-                            </div>
-                            <button class="btn btn-primary w-100" onclick="viewRecipe('baked-salmon')">View Recipe</button>
+                            <h5 class="card-title">Grilled Paneer & Veggies Bowl</h5>
+                            <span class="badge bg-success">320 kcal</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="recipe-card h-100">
-                        <div class="recipe-image bg-info">
-                            <i class="fas fa-blender text-white"></i>
-                        </div>
+                <div class="col-md-4">
+                    <div class="card recipe-card h-100" data-recipe-id="9" onclick="showRecipeDetails(9)">
+                        <img src="https://images.unsplash.com/photo-1604909053191-94054f3fd34c" class="card-img-top" alt="Millet Vegetable Pulao">
                         <div class="card-body">
-                            <h5 class="card-title">Green Power Smoothie</h5>
-                            <p class="card-text">Energizing blend of spinach, banana, and tropical fruits.</p>
-                            <div class="recipe-meta mb-3">
-                                <span class="badge bg-secondary">Snacks</span>
-                                <span class="badge bg-success">5 min</span>
-                                <span class="badge bg-info">Vegan</span>
-                            </div>
-                            <div class="nutrition-info mb-3">
-                                <small class="text-muted">
-                                    <i class="fas fa-fire-alt"></i> 180 kcal |
-                                    <i class="fas fa-dumbbell"></i> 4g protein |
-                                    <i class="fas fa-leaf"></i> 6g fiber
-                                </small>
-                            </div>
-                            <button class="btn btn-primary w-100" onclick="viewRecipe('green-smoothie')">View Recipe</button>
+                            <h5 class="card-title">Millet Vegetable Pulao</h5>
+                            <span class="badge bg-success">280 kcal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dinner Tab -->
+        <div class="tab-pane fade" id="dinner" role="tabpanel">
+            <div class="row g-4">
+                <!-- Original -->
+                <div class="col-md-4">
+                    <div class="card recipe-card h-100" data-recipe-id="3" onclick="showRecipeDetails(3)">
+                        <img src="https://secure.clinicwala.com/uploads/file-1681793077.png" class="card-img-top" alt="Grilled Fish with Veggies">
+                        <div class="card-body">
+                            <h5 class="card-title">Grilled Fish with Veggies</h5>
+                            <span class="badge bg-success">400 kcal</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="recipe-card h-100">
-                        <div class="recipe-image bg-dark">
-                            <i class="fas fa-pepper-hot text-white"></i>
-                        </div>
+                <!-- New Dinner Recipes -->
+                <div class="col-md-4">
+                    <div class="card recipe-card h-100" data-recipe-id="10" onclick="showRecipeDetails(10)">
+                        <img src="https://images.unsplash.com/photo-1617196032984-3ddf2c1ef7d3" class="card-img-top" alt="Spinach Lentil Soup">
                         <div class="card-body">
-                            <h5 class="card-title">Mediterranean Chickpea Salad</h5>
-                            <p class="card-text">Fresh, protein-rich salad with Mediterranean flavors.</p>
-                            <div class="recipe-meta mb-3">
-                                <span class="badge bg-danger">Lunch</span>
-                                <span class="badge bg-success">15 min</span>
-                                <span class="badge bg-info">Vegan</span>
-                            </div>
-                            <div class="nutrition-info mb-3">
-                                <small class="text-muted">
-                                    <i class="fas fa-fire-alt"></i> 350 kcal |
-                                    <i class="fas fa-dumbbell"></i> 15g protein |
-                                    <i class="fas fa-leaf"></i> 10g fiber
-                                </small>
-                            </div>
-                            <button class="btn btn-primary w-100" onclick="viewRecipe('chickpea-salad')">View Recipe</button>
+                            <h5 class="card-title">Spinach Lentil Soup</h5>
+                            <span class="badge bg-success">220 kcal</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="recipe-card h-100">
-                        <div class="recipe-image bg-danger">
-                            <i class="fas fa-apple-alt text-white"></i>
+                <div class="col-md-4">
+                    <div class="card recipe-card h-100" data-recipe-id="11" onclick="showRecipeDetails(11)">
+                        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8cdd" class="card-img-top" alt="Quinoa Salad">
+                        <div class="card-body">
+                            <h5 class="card-title">Quinoa Salad</h5>
+                            <span class="badge bg-success">270 kcal</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Snacks Tab -->
+        <div class="tab-pane fade" id="snacks" role="tabpanel">
+            <div class="row g-4">
+                <!-- Original -->
+                <div class="col-md-4">
+                    <div class="card recipe-card h-100" data-recipe-id="4" onclick="showRecipeDetails(4)">
+                        <img src="https://images.unsplash.com/photo-1601050690597-3c24977f2b9e" class="card-img-top" alt="Greek Yogurt with Berries">
+                        <div class="card-body">
+                            <h5 class="card-title">Greek Yogurt with Berries</h5>
+                            <span class="badge bg-success">180 kcal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Snacks Recipes -->
+                <div class="col-md-4">
+                    <div class="card recipe-card h-100" data-recipe-id="12" onclick="showRecipeDetails(12)">
+                        <img src="https://images.unsplash.com/photo-1588167056547-85f8d94c8c3c" class="card-img-top" alt="Sweet Potato Fries">
+                        <div class="card-body">
+                            <h5 class="card-title">Sweet Potato Fries</h5>
+                            <span class="badge bg-success">190 kcal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card recipe-card h-100" data-recipe-id="13" onclick="showRecipeDetails(13)">
+                        <img src="https://images.unsplash.com/photo-1572441710534-680c4e1a3c36" class="card-img-top" alt="Energy Balls">
                         <div class="card-body">
                             <h5 class="card-title">Energy Balls</h5>
-                            <p class="card-text">No-bake protein-packed snacks with dates and nuts.</p>
-                            <div class="recipe-meta mb-3">
-                                <span class="badge bg-secondary">Snacks</span>
-                                <span class="badge bg-success">10 min</span>
-                                <span class="badge bg-info">Raw</span>
-                            </div>
-                            <div class="nutrition-info mb-3">
-                                <small class="text-muted">
-                                    <i class="fas fa-fire-alt"></i> 120 kcal |
-                                    <i class="fas fa-dumbbell"></i> 4g protein |
-                                    <i class="fas fa-heart"></i> Healthy fats
-                                </small>
-                            </div>
-                            <button class="btn btn-primary w-100" onclick="viewRecipe('energy-balls')">View Recipe</button>
+                            <span class="badge bg-success">210 kcal</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Individual category tabs would show filtered recipes -->
-        <div class="tab-pane fade" id="breakfast">
-            <div class="text-center">
-                <p class="text-muted">Breakfast recipes to start your day right</p>
-            </div>
-        </div>
-        
-        <div class="tab-pane fade" id="lunch">
-            <div class="text-center">
-                <p class="text-muted">Satisfying lunch options for sustained energy</p>
-            </div>
-        </div>
-        
-        <div class="tab-pane fade" id="dinner">
-            <div class="text-center">
-                <p class="text-muted">Wholesome dinner recipes for evening nourishment</p>
-            </div>
-        </div>
-        
-        <div class="tab-pane fade" id="snacks">
-            <div class="text-center">
-                <p class="text-muted">Healthy snacks for between meals</p>
-            </div>
-        </div>
     </div>
 </div>
 
-<!-- Recipe Detail Modal -->
-<div class="modal fade" id="recipeModal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
+<!-- Modal -->
+<div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="recipeTitle">Recipe Details</h5>
+                <h5 class="modal-title" id="recipeModalLabel"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div id="recipeContent">
-                    <!-- Recipe details will be loaded here -->
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary" onclick="addToFavorites()">
-                    <i class="fas fa-heart"></i> Add to Favorites
-                </button>
-                <button type="button" class="btn btn-primary" onclick="addToMealPlan()">
-                    <i class="fas fa-calendar-plus"></i> Add to Meal Plan
-                </button>
+                <img id="recipeImage" class="img-fluid rounded mb-3" alt="Recipe Image">
+                <p><strong>Calories:</strong> <span id="recipeCalories"></span></p>
+                <p><strong>Ingredients:</strong></p>
+                <ul id="recipeIngredients"></ul>
+                <p><strong>Instructions:</strong></p>
+                <p id="recipeInstructions"></p>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
 
-{% block scripts %}
 <script>
-function viewRecipe(recipeId) {
-    const recipes = {
-        'overnight-oats': {
-            title: 'Overnight Oats',
-            servings: 1,
-            prepTime: '5 minutes',
-            ingredients: [
-                '1/2 cup rolled oats',
-                '1/2 cup milk of choice',
-                '1 tbsp chia seeds',
-                '1 tbsp maple syrup',
-                '1/2 banana, sliced',
-                '1 tbsp almond butter',
-                '1/4 tsp vanilla extract',
-                'Pinch of cinnamon'
-            ],
-            instructions: [
-                'In a jar or container, combine oats, chia seeds, maple syrup, vanilla, and cinnamon.',
-                'Pour in milk and stir well to combine.',
-                'Add banana slices and a dollop of almond butter.',
-                'Refrigerate overnight or at least 4 hours.',
-                'In the morning, give it a stir and add more toppings if desired.',
-                'Enjoy cold or heat for 30 seconds in microwave.'
-            ],
-            nutrition: {
-                calories: 320,
-                protein: 12,
-                carbs: 48,
-                fiber: 8,
-                fat: 11
-            }
-        },
-        'quinoa-bowl': {
-            title: 'Quinoa Buddha Bowl',
-            servings: 2,
-            prepTime: '30 minutes',
-            ingredients: [
-                '1 cup quinoa, cooked',
-                '2 cups baby spinach',
-                '1 cup roasted sweet potato, cubed',
-                '1/2 cup chickpeas, roasted',
-                '1/2 avocado, sliced',
-                '1/4 cup red cabbage, shredded',
-                '2 tbsp tahini',
-                '1 tbsp lemon juice',
-                '1 tsp maple syrup',
-                'Salt and pepper to taste'
-            ],
-            instructions: [
-                'Cook quinoa according to package instructions.',
-                'Roast sweet potato cubes at 400°F for 20 minutes.',
-                'Roast chickpeas with olive oil and spices for 15 minutes.',
-                'Make tahini dressing by whisking tahini, lemon juice, maple syrup, and water.',
-                'Arrange quinoa, spinach, sweet potato, chickpeas, avocado, and cabbage in bowls.',
-                'Drizzle with tahini dressing and serve.'
-            ],
-            nutrition: {
-                calories: 480,
-                protein: 18,
-                carbs: 65,
-                fiber: 12,
-                fat: 18
-            }
-        },
-        'baked-salmon': {
-            title: 'Baked Salmon with Vegetables',
-            servings: 2,
-            prepTime: '25 minutes',
-            ingredients: [
-                '2 salmon fillets (6 oz each)',
-                '2 cups broccoli florets',
-                '1 bell pepper, sliced',
-                '1 zucchini, sliced',
-                '2 tbsp olive oil',
-                '1 lemon, sliced',
-                '2 cloves garlic, minced',
-                'Salt, pepper, and herbs to taste'
-            ],
-            instructions: [
-                'Preheat oven to 425°F (220°C).',
-                'Place salmon fillets on a baking sheet.',
-                'Arrange vegetables around the salmon.',
-                'Drizzle with olive oil and season with salt, pepper, and herbs.',
-                'Top salmon with lemon slices and minced garlic.',
-                'Bake for 15-18 minutes until salmon flakes easily.',
-                'Serve immediately with vegetables.'
-            ],
-            nutrition: {
-                calories: 420,
-                protein: 35,
-                carbs: 15,
-                fiber: 6,
-                fat: 25
-            }
-        }
-    };
+const recipeDetails = [
+    {
+        id: 1,
+        title: "Avocado Toast",
+        calories: "200 kcal",
+        image: "https://www.allrecipes.com/thmb/mJJPeaKKj61DZ4kc_jHHVI3kmG8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/AvocadoToastwithEggFranceC4x3-bb87e3bbf1944657b7db35f1383fabdb.jpg",
+        ingredients: ["2 slices whole grain bread", "1 avocado", "Salt & Pepper"],
+        instructions: "Toast bread, smash avocado on top, season and serve."
+    },
+    {
+        id: 2,
+        title: "Grilled Chicken Salad",
+        calories: "350 kcal",
+        image: "https://www.dinneratthezoo.com/wp-content/uploads/2020/12/grilled-chicken-salad-4.jpg",
+        ingredients: ["Chicken breast", "Lettuce", "Tomatoes", "Cucumber", "Olive oil"],
+        instructions: "Grill chicken, toss veggies, add dressing, and combine."
+    },
+    {
+        id: 3,
+        title: "Grilled Fish with Veggies",
+        calories: "400 kcal",
+        image: "https://secure.clinicwala.com/uploads/file-1681793077.png",
+        ingredients: ["Fish fillet", "Zucchini", "Bell peppers", "Olive oil", "Lemon"],
+        instructions: "Grill fish and veggies, drizzle with lemon."
+    },
+    {
+        id: 4,
+        title: "Greek Yogurt with Berries",
+        calories: "180 kcal",
+        image: "https://images.unsplash.com/photo-1601050690597-3c24977f2b9e",
+        ingredients: ["Greek yogurt", "Blueberries", "Strawberries", "Honey"],
+        instructions: "Mix yogurt with berries and drizzle honey."
+    },
+    {
+        id: 5,
+        title: "Vegetable Oats Upma",
+        calories: "250 kcal",
+        image: "https://images.unsplash.com/photo-1617196032984-3ddf2c1ef7d3",
+        ingredients: ["Rolled oats", "Mixed veggies", "Mustard seeds", "Curry leaves"],
+        instructions: "Sauté veggies and spices, add oats, cook until soft."
+    },
+    {
+        id: 6,
+        title: "Banana Peanut Smoothie",
+        calories: "300 kcal",
+        image: "https://images.unsplash.com/photo-1590080875831-bb2f1b58d8b0",
+        ingredients: ["Banana", "Peanut butter", "Milk", "Honey"],
+        instructions: "Blend all ingredients until smooth."
+    },
+    {
+        id: 7,
+        title: "Brown Rice Khichdi",
+        calories: "300 kcal",
+        image: "https://images.unsplash.com/photo-1633980672867-bbbf4a88c205",
+        ingredients: ["Brown rice", "Moong dal", "Mixed veggies", "Spices"],
+        instructions: "Cook rice and dal with veggies and spices."
+    },
+    {
+        id: 8,
+        title: "Grilled Paneer & Veggies Bowl",
+        calories: "320 kcal",
+        image: "https://images.unsplash.com/photo-1589302168068-964664d93dc0",
+        ingredients: ["Paneer cubes", "Bell peppers", "Broccoli", "Olive oil"],
+        instructions: "Grill paneer and veggies, season and serve."
+    },
+    {
+        id: 9,
+        title: "Millet Vegetable Pulao",
+        calories: "280 kcal",
+        image: "https://images.unsplash.com/photo-1604909053191-94054f3fd34c",
+        ingredients: ["Millet", "Carrots", "Peas", "Onion", "Spices"],
+        instructions: "Cook millet with sautéed veggies and spices."
+    },
+    {
+        id: 10,
+        title: "Spinach Lentil Soup",
+        calories: "220 kcal",
+        image: "https://images.unsplash.com/photo-1617196032984-3ddf2c1ef7d3",
+        ingredients: ["Spinach", "Moong dal", "Garlic", "Spices"],
+        instructions: "Cook dal, add spinach and spices, simmer and blend."
+    },
+    {
+        id: 11,
+        title: "Quinoa Salad",
+        calories: "270 kcal",
+        image: "https://images.unsplash.com/photo-1556911220-e15b29be8cdd",
+        ingredients: ["Quinoa", "Cucumber", "Tomato", "Lemon dressing"],
+        instructions: "Toss cooked quinoa with veggies and dressing."
+    },
+    {
+        id: 12,
+        title: "Sweet Potato Fries",
+        calories: "190 kcal",
+        image: "https://images.unsplash.com/photo-1588167056547-85f8d94c8c3c",
+        ingredients: ["Sweet potatoes", "Olive oil", "Salt"],
+        instructions: "Cut sweet potatoes, toss in oil, bake until crispy."
+    },
+    {
+        id: 13,
+        title: "Energy Balls",
+        calories: "210 kcal",
+        image: "https://images.unsplash.com/photo-1572441710534-680c4e1a3c36",
+        ingredients: ["Oats", "Dates", "Peanut butter", "Cocoa"],
+        instructions: "Blend ingredients, roll into balls, chill."
+    }
+];
 
-    const recipe = recipes[recipeId];
+function showRecipeDetails(id) {
+    const recipe = recipeDetails.find(r => r.id === id);
     if (recipe) {
-        document.getElementById('recipeTitle').textContent = recipe.title;
-        
-        let content = `
-            <div class="recipe-details">
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <h6><i class="fas fa-users"></i> Servings: ${recipe.servings}</h6>
-                        <h6><i class="fas fa-clock"></i> Prep Time: ${recipe.prepTime}</h6>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="nutrition-summary">
-                            <h6>Nutrition per serving:</h6>
-                            <ul class="list-unstyled">
-                                <li><strong>${recipe.nutrition.calories}</strong> calories</li>
-                                <li><strong>${recipe.nutrition.protein}g</strong> protein</li>
-                                <li><strong>${recipe.nutrition.fiber}g</strong> fiber</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-6">
-                        <h6>Ingredients:</h6>
-                        <ul>
-                            ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <h6>Instructions:</h6>
-                        <ol>
-                            ${recipe.instructions.map(instruction => `<li>${instruction}</li>`).join('')}
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        document.getElementById('recipeContent').innerHTML = content;
-        new bootstrap.Modal(document.getElementById('recipeModal')).show();
+        document.getElementById("recipeModalLabel").innerText = recipe.title;
+        document.getElementById("recipeImage").src = recipe.image;
+        document.getElementById("recipeCalories").innerText = recipe.calories;
+
+        const ingredientsList = document.getElementById("recipeIngredients");
+        ingredientsList.innerHTML = "";
+        recipe.ingredients.forEach(ing => {
+            const li = document.createElement("li");
+            li.innerText = ing;
+            ingredientsList.appendChild(li);
+        });
+
+        document.getElementById("recipeInstructions").innerText = recipe.instructions;
+        const modal = new bootstrap.Modal(document.getElementById("recipeModal"));
+        modal.show();
     }
 }
-
-function addToFavorites() {
-    // Add to favorites functionality
-    alert('Recipe added to favorites!');
-}
-
-function addToMealPlan() {
-    // Add to meal plan functionality
-    alert('Recipe added to meal plan!');
-}
 </script>
+
+<style>
+.recipe-card {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.recipe-card:hover {
+    transform: scale(1.05);
+}
+</style>
 {% endblock %}

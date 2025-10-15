@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify, send_file, url_for
 from flask_pymongo import PyMongo
-from datetime import datetime, timedelta, UTC
+from datetime import datetime, timedelta
+import datetime as dt
 import json
 import os
 from bson import ObjectId
@@ -8,7 +9,7 @@ import secrets
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 import logging
-import openai
+import google.generativeai as genai
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -18,13 +19,11 @@ load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Configure OpenAI API
-try:
-    openai.api_key = os.getenv("OPENAI_API_KEY")
-    if not openai.api_key:
-        logger.warning("OPENAI_API_KEY not found. Chatbot will not function.")
-except Exception as e:
-    logger.error(f"Failed to configure OpenAI API: {e}")
+# Configure Gemini API
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+if not GEMINI_API_KEY:
+    logger.warning("GEMINI_API_KEY not found. Chatbot will not function.")
+genai.configure(api_key=GEMINI_API_KEY)
 
 def create_app(config=None):
     """Application factory pattern"""
@@ -36,7 +35,13 @@ def create_app(config=None):
     app.config['DEBUG'] = os.environ.get('FLASK_DEBUG', True)
     
     # Initialize extensions
-    mongo = PyMongo(app)
+    try:
+        mongo = PyMongo(app)
+        mongo_available = True
+    except Exception as e:
+        logger.warning(f"MongoDB unavailable: {e}")
+        mongo = None
+        mongo_available = False
     
     # JSON Encoder for MongoDB ObjectId
     class JSONEncoder(json.JSONEncoder):
@@ -82,18 +87,21 @@ def create_app(config=None):
 
     @app.route('/api/chatbot', methods=['POST'])
     def chatbot_response():
-        """Handle chatbot interactions using OpenAI API"""
+        """Handle chatbot interactions using Gemini API"""
         try:
-            if not openai.api_key:
-                 return jsonify({'error': 'Chatbot is not configured. Missing API key.'}), 500
+            if not GEMINI_API_KEY:
+                return jsonify({'error': 'Chatbot is not configured. Missing Gemini API key.'}), 500
 
             data = request.get_json()
             user_message = data.get('message', '').strip()
             
+            # Get user details from the request
             health_data = {
-                "bmi": data.get("bmi"),
+                "age": data.get("age"),
                 "weight": data.get("weight"),
-                "mental_score": data.get("mentalHealthScore")
+                "height": data.get("height"),
+                "activityLevel": data.get("activityLevel"),
+                "healthGoals": data.get("healthGoals")
             }
 
             if not user_message:
@@ -101,18 +109,22 @@ def create_app(config=None):
             
             response_text = generate_chatbot_response(user_message, health_data)
             
-            # Store conversation
-            conversation = {
-                'user_message': user_message,
-                'bot_response': response_text,
-                'timestamp': datetime.now(datetime.UTC),
-                'session_id': data.get('session_id')
-            }
-            mongo.db.conversations.insert_one(conversation)
+            # Store conversation if MongoDB is available
+            if mongo is not None and mongo_available:
+                try:
+                    conversation = {
+                        'user_message': user_message,
+                        'bot_response': response_text,
+                        'timestamp': datetime.now(dt.timezone.utc),
+                        'session_id': data.get('session_id')
+                    }
+                    mongo.db.conversations.insert_one(conversation)
+                except Exception as db_exc:
+                    logger.warning(f"Could not store conversation in MongoDB: {db_exc}")
             
             return jsonify({
                 'response': response_text,
-                'timestamp': datetime.utcnow().isoformat()
+                'timestamp': datetime.now(dt.timezone.utc).isoformat()
             })
             
         except Exception as e:
@@ -120,39 +132,36 @@ def create_app(config=None):
             return jsonify({'error': 'Chatbot unavailable due to an internal error.'}), 500
 
     def generate_chatbot_response(user_message, health_data):
-        """Generate a response using the OpenAI API."""
+        """Generate a response using the Gemini API."""
         try:
             system_prompt = (
                 "You are an expert health and wellness assistant named Holistiq. "
                 "Your goal is to provide safe, relevant, and actionable suggestions for diet, exercise, and mental well-being. "
                 "You must use the user's provided health data to personalize your recommendations. "
-                "IMPORTANT: Always include a disclaimer that you are not a medical professional and the user should consult a doctor before making significant lifestyle changes."
+                "IMPORTANT: Always include a disclaimer that you are not a medical professional and the user should consult a doctor before making significant lifestyle changes. "
+                "Provide detailed answers between 60-70 words, with specific recommendations based on the user's age, weight, height, activity level, and health goals."
             )
+            # Calculate BMI if weight and height are provided
+            if health_data.get('weight') and health_data.get('height'):
+                bmi = round(float(health_data['weight']) / ((float(health_data['height']) / 100) ** 2), 1)
+            else:
+                bmi = None
 
             user_context = (
                 "Here is my health data:\n"
-                f"- BMI: {health_data.get('bmi', 'Not provided')}\n"
+                f"- Age: {health_data.get('age', 'Not provided')} years\n"
                 f"- Weight: {health_data.get('weight', 'Not provided')} kg\n"
-                f"- Recent Mental Wellness Score: {health_data.get('mental_score', 'Not provided')} (out of 10, where 10 is excellent)\n"
+                f"- Height: {health_data.get('height', 'Not provided')} cm\n"
+                f"- BMI: {bmi if bmi else 'Not provided'}\n"
+                f"- Activity Level: {health_data.get('activityLevel', 'Not provided')}\n"
+                f"- Health Goals: {health_data.get('healthGoals', 'Not provided')}\n"
                 "---\n"
                 f"My question is: {user_message}"
             )
-
-            client = openai.Client()
-            response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_context}
-                ],
-                temperature=0.7,
-                max_tokens=250
-            )
-            
-            return response.choices[0].message.content.strip()
-
+            response = genai.GenerativeModel("gemini-2.5-flash").generate_content(f"{system_prompt}\n{user_context}")
+            return response.text.strip()
         except Exception as e:
-            logger.error(f"OpenAI API call failed: {e}")
+            logger.error(f"Gemini API call failed: {e}")
             return "I'm sorry, I'm having trouble connecting to my knowledge base right now. Please try again later."
 
     # ... (all other functions and error handlers remain the same) ...
